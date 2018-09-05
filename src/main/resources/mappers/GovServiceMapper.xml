@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.sdyy.springboot.bgt.bgt_visual_boot.mapper.GovServiceMapper">
+		
+	<!-- 按组织机构获取资源统计信息表  from open_data_org_statistics -->
+	<select id="queryByDept" resultType="QueryByDept">
+		SELECT
+			*
+		FROM
+			gov_service_dept_located
+	</select>
+	
+	<!-- 按组织机构获取资源统计信息表  from open_data_org_statistics -->
+	<select id="queryByHandle" resultType="QueryByHandle">
+		SELECT
+			*
+		FROM
+			gov_service_dept_handle
+	</select>
+	
+	<!-- 按组织机构获取资源统计信息表  from open_data_org_statistics -->
+	<select id="queryByViolation" resultType="QueryByViolation">
+		SELECT
+			*
+		FROM
+			gov_service_violation_statistics
+	</select>
+	
+	<!-- 按组织机构获取资源统计信息表  from open_data_org_statistics -->
+	<select id="queryByAnalysis" resultType="QueryByAnalysis">
+		SELECT
+			*
+		FROM
+			gov_service_hot_analysis
+	</select>
+	
+	
+</mapper> 

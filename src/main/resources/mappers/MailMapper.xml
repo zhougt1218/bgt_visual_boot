@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.sdyy.springboot.bgt.bgt_visual_boot.mapper.MailMapper">
+	
+	<!-- 查询mail_statistics_user_log -->
+	<select id="queryByUserLog" resultType="QueryByUserLog">
+		SELECT
+			*
+		FROM
+			mail_statistics_user_log
+		WHERE
+			date in (
+				SELECT
+					max(date)
+				FROM
+					mail_statistics_user_log
+			)
+	</select>
+	
+	<!-- 查询mail_statistics_mail_log -->
+	<select id="queryByMailLog" resultType="QueryByMailLog">
+		SELECT
+			date,
+			sum(send_size) AS send_size,
+			sum(send_num) AS send_num,
+			sum(receive_num) AS receive_num,
+			sum(receive_size) AS receive_size
+		FROM
+			mail_statistics_mail_log
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt; date(date)
+		GROUP BY
+			date
+	</select>
+	
+	<!-- 查询累计流量 -->
+	<select id="queryByMailLogSum" resultType="QueryByMailLog">
+		SELECT
+			sum(send_size) AS send_size,
+			sum(send_num) AS send_num,
+			sum(receive_num) AS receive_num,
+			sum(receive_size) AS receive_size
+		FROM
+			mail_statistics_mail_log
+	</select>
+	
+	<!-- 查询mail_t_attack_num -->
+	<select id="queryByAttackNum" resultType="QueryByTAttackType">
+		SELECT
+			sum(A.attack_num) AS attack_num,
+			A.date AS date
+		FROM
+			(
+				SELECT
+					attack_num,
+					DATE_FORMAT(date, '%Y-%m-%d') AS date
+				FROM
+					mail_t_attack_num
+				WHERE DATE_SUB(CURDATE(), INTERVAL 6 DAY) &lt;= date(date)
+				GROUP BY
+					date
+			) A
+		GROUP BY
+			A.date
+	</select>
+	
+	<!-- 查询mail_t_attack_type -->
+	<select id="queryByAttackType" resultType="QueryByTAttackType">
+		SELECT
+			attack_type,
+			sum(attack_num) as attack_num
+		
+		FROM
+			mail_t_attack_type
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 15 DAY) &lt;= (
+				SELECT
+					max(date)
+				FROM
+					mail_t_attack_type
+			)
+		GROUP BY
+			attack_type
+	</select>
+	
+		
+	<select id="queryBySpam" resultType="QueryBySpam">
+		SELECT
+			*
+		FROM
+			mail_t_zs_count
+	</select>
+	
+ 	<select id="queryByDeptActive" resultType="QueryByDeptActive">
+		SELECT
+			*
+		FROM
+			mail_dept_active
+		WHERE
+			org_name != '总计'
+		ORDER BY
+			usage_rate DESC
+		LIMIT 0,20
+	</select>
+	
+	<select id="queryBySendReceive" resultType="QueryBySendReceive">
+		SELECT
+			*
+		FROM
+			mail_send_receive
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(update_time)
+	</select> 
+	
+	
+		<!-- 查询mail_statistics_user_log -->
+	<select id="queryByUserLogin" resultType="QueryByUserLog">
+		SELECT date,logins_num from mail_statistics_user_log
+		where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt; date(date)
+	</select>
+	
+	
+</mapper> 

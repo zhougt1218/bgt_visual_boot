@@ -1,0 +1,478 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>统一技术平台</title>
+    <link href="css/appService/unitTech/style.css" th:href="@{/css/appService/unitTech/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="js/echarts.min.js" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<body>
+<div class="header">
+    <a href="index" class="back"><span></span>返回</a>
+    <p class="timer">2018 年 8 月 20 日 &nbsp;&nbsp;&nbsp; 星期一 &nbsp;&nbsp;&nbsp; 15:51</p>
+</div>
+<div class="content">
+    <div class="left_content">
+        <p class="content_title">资源情况</p>
+        <div class="data_index">
+            <p class="module_title" style="margin-top: 18px;">数据指标</p>
+            <span class=" index_count column_count">3662</span>
+            <span class=" index_count data_count">677</span>
+            <span class=" index_count message_count"></span>
+            <span class=" index_name column_name">栏目总数</span>
+            <span class=" index_name data_name">TRS数据总量</span>
+            <span class=" index_name message_name">大汉数据总量</span>
+        </div>
+        <div class="data_type">
+            <p class="module_title">数据类型占比</p>
+            <p class="trs"><span></span>TRS</p>
+            <div id="data_type">
+                <div id="data_type_left">
+
+                </div>
+                <div class="data_type_right">
+                    <div class="legend_list database">
+                        <span></span>
+                        <p>
+                            <span id="database_num">156</span>
+                            <br/>
+                            数据库
+                        </p>
+
+                    </div>
+                    <div class="legend_list file">
+                        <span></span>
+                        <p>
+                            <span id="file_num">704</span>
+                            <br/>
+                            文件
+                        </p>
+                    </div>
+                    <div class="legend_list video">
+                        <span></span>
+                        <p>
+                            <span id="video_num">201</span>
+                            <br/>
+                            视频
+                        </p>
+
+                    </div>
+                    <!-- <div class="legend_list other">
+                        <span></span>
+                        <p>
+                            <span >200</span>
+                            <br />
+                            其他
+                        </p>
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="user_visit">
+            <span class="ordinary_mess mess">123456</span>
+            <span class="self_mess mess">123456</span>
+            <span class="data_mess mess">123456</span>
+        </div>
+        <div class="column_open">
+            <p class="module_title">栏目开设情况</p>
+            <ul class="column_list">
+                <ul class="top10">
+                    <li class="lis li1">
+                        <p>No.1 <i>水利厅</i> <span>103</span></p>
+                    </li>
+                    <li class="lis li2">
+                        <p>No.2 <i>农业厅</i> <span>90</span></p>
+                    </li>
+                    <li class="lis li3">
+                        <p>No.3 <i>环保厅</i> <span>80</span></p>
+                    </li>
+                    <li class="lis li4">
+                        <p>No.4 <i>卫计委</i> <span>72</span></p>
+                    </li>
+                    <li class="lis li5">
+                        <p>No.5 <i>国土资源厅</i> <span>65</span></p>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="middle_content">
+        <p class="content_title" style="width:100%">系统情况</p>
+        <div class="city_situ">
+            <div id="city_situ">
+
+            </div>
+            <div class="city_detail">
+                <span class="city_name">济南市</span> 网站接入平台数
+                <p>0</p>
+            </div>
+        </div>
+        <div class="web_count">
+            <p class="web_count_num">接入单位 <span>13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接入网站<span>  162</span></p>
+            <div class="web_list_title">
+                <p>
+                    <span>主站</span>
+                    <i>接入子站数量</i>
+                </p>
+            </div>
+            <ul class="web_list">
+                <li>
+                    <span>水利厅</span>
+                    <i>1234</i>
+                </li>
+                <li>
+                    <span>水利厅</span>
+                    <i>1234</i>
+                </li>
+                <li>
+                    <span>水利厅</span>
+                    <i>1234</i>
+                </li>
+                <li>
+                    <span>水利厅</span>
+                    <i>1234</i>
+                </li>
+                <li>
+                    <span>水利厅</span>
+                    <i>1234</i>
+                </li>
+            </ul>
+            <!-- <table class="web_list" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <th>部门</th>
+                    <th>接入网站数量</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan=2>
+                        <div id="outer_box">
+                            <div id="inner_box">
+                                <table class="web_list">
+                                    <tbody id="dept_web">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+        <div class="admin_num">
+            <p class="web_count_num">管理员数量 <span>4793</span></p>
+            <div class="login_group" id="admin_num">
+                <!-- <span class="manager_icon"></span>
+                <div class="login_pos" id="manager_login"></div>
+                <p class="manager_num">管理员登录数： <span>1,374 / 82%</span>	</p>
+                <span class="temp_icon"></span>
+                <div class="login_temp" id="temp_login"></div>
+                <p class="temp_num">其他临时用户登录数： <span>357 / 18%</span>	</p>	 -->
+
+            </div>
+        </div>
+    </div>
+    <div class="right_content">
+        <p class="content_title">热门情况</p>
+        <div class="hot_web">
+            <p class="module_title" style="margin-top: 18px;">热门网站</p>
+            <div class="hot_list_title">
+                <span>排名</span> <i>网站名称</i> <b>浏览量</b>
+            </div>
+            <ul class="hot_list">
+                <li class="list1"><span>1</span> <i>省公共资源交易平台中心</i> <b>9013</b></li>
+                <li class="list2"><span>2</span> <i>省煤炭工业局官网</i> <b>2890</b></li>
+                <li class="list3"><span>3</span> <i>科技厅官网</i> <b>1780</b></li>
+                <li class="list4"><span>4</span> <i>扶贫网</i> <b>1672</b></li>
+                <li class="list5"><span>5</span> <i>省国防科工办平台</i> <b>565</b></li>
+            </ul>
+        </div>
+        <div class="hot_article">
+            <p class="module_title" style="margin-top: 16px;">热点文章</p>
+            <div class="article_list_title">
+                <span>文章名称</span> <i>阅读量</i>
+            </div>
+            <ul class="article_list">
+                <!-- <li><a style="color:#447aff">文章名称</a> <i>阅读量</i></li> -->
+                <li class="article1"><a>文章1</a> <i>9912</i></li>
+                <li class="article2"><a>文章2</a> <i>9913</i></li>
+                <li class="article3"><a>文章3</a> <i>1235</i></li>
+                <li class="article4"><a>文章4</a> <i>2221</i></li>
+                <li class="article5"><a>文章5</a> <i>1231</i></li>
+                <li class="article6"><a>文章6</a> <i>1231</i></li>
+                <li class="article7"><a>文章7</a> <i>1231</i></li>
+                <li class="article8"><a>文章8</a> <i>1231</i></li>
+                <li class="article9"><a>文章9</a> <i>1231</i></li>
+                <li class="article10"><a>文章10</a> <i>1231</i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/echartsmap/shandong.js" th:src="@{/js/echartsmap/shandong.js}"></script>
+
+<script src="js/echartsImg/echartsImg.js" th:src="@{/js/echartsImg/echartsImg.js}"></script>
+<script>
+    (function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a, b;
+        if (pingmu_width >= 3840) {
+            a = (pingmu_height / 2160).toFixed(8);
+            b = (pingmu_width / 3840).toFixed(8);
+
+        } else {
+            a = (pingmu_height / 1080).toFixed(8);
+            b = (pingmu_width / 1920).toFixed(8);
+        }
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    })();
+    window.addEventListener('resize', function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a = (pingmu_height / 1080).toFixed(8);
+        var b = (pingmu_width / 1920).toFixed(8);
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    });
+</script>
+<script th:inline="javascript">
+    function sum(arr) {
+        var s = 0;
+        for (var i = arr.length - 1; i >= 0; i--) {
+            s += arr[i];
+        }
+        return s;
+    }
+
+    function mapObj(name, value) {
+        this.value = value;
+        this.name = name;
+
+    }
+
+    function mapObj2(name, value, url) {
+        this.value = value;
+        this.name = name;
+        this.url = url
+    }
+
+    //数据指标
+    var queryByBasic =[[ ${queryByBasic}]];
+    queryByBasic = eval('(' + queryByBasic + ')');
+    //数据类型占比
+    var queryByDisk =[[ ${queryByDisk}]];
+    queryByDisk = eval('(' + queryByDisk + ')');
+
+    var queryByStat = [[${queryByStat}]];
+    queryByStat = eval('(' + queryByStat + ')');
+
+    $(".ordinary_mess").html(queryByStat[0].i_mulinfos);
+    $(".self_mess").html(queryByStat[0].i_cusinfos);
+    $(".data_mess").html(queryByStat[0].i_metainfos);
+    dept_name = [];
+    chn_num = [];
+    xinxi_num = [];
+    web_num = [];
+
+
+    var accessCompany = [
+        {name: '省办公厅', value: 0},
+        {name: '省发改委', value: 3},
+        {name: '省住建厅', value: 1},
+        {name: '省统计局', value: 0},
+        {name: '省外事办', value: 7},
+        {name: '省公安厅', value: 0},
+        {name: '省疾病和预防控制中心', value: 22},
+    ];
+
+    for (var i in queryByBasic) {
+        dept_name.push(queryByBasic[i].city_name);
+        web_num.push(parseInt(queryByBasic[i].web_num));
+        chn_num.push(parseInt(queryByBasic[i].chnls_num));
+        xinxi_num.push(parseInt(queryByBasic[i].xinxigk_num));
+        //接入单位，接入网站数量
+        var obj = new mapObj(("省" + queryByBasic[i].city_name), Number(queryByBasic[i].web_num));
+        accessCompany.push(obj);
+    }
+    console.log(queryByBasic);
+    console.log(accessCompany);
+    var compare = function (obj1, obj2) {
+        var val1 = obj1.value;
+        var val2 = obj2.value;
+        if (val1 < val2) {
+            return 1;
+        } else if (val1 > val2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    accessCompany = accessCompany.sort(compare);
+    var html = "";
+    for (var i = 0; i < accessCompany.length; i++) {
+        /* $("#dept_web").append("<tr><td>"+accessCompany[i].name+"</td><td>"+accessCompany[i].value+"</td></tr>"); */
+        html += '<li><span>' + accessCompany[i].name + '</span><i>' + accessCompany[i].value + '</i></li>';
+    }
+    $(".web_list").html(html);
+
+    /* var html = "<tr>"
+    <td>山东省政府</td><td>0</td></tr><tr><td>发展和改革委员会</td><td>3</td></tr><tr><td>住房和城乡建设厅</td><td>0</td></tr><tr><td>统计局</td><td>0</td></tr><tr><td>外事办</td><td>7</td></tr><tr>
+        <td>公安厅</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>疾病预防控制中心</td>
+        <td>22</td>
+    </tr>" */
+
+
+    //栏目总数
+    $(".column_count").html(sum(chn_num) + queryByStat[0].i_columns);
+    //数据总量
+    $(".data_count").html(parseInt(queryByDisk[0].database_num) + parseInt(queryByDisk[0].file_num)
+        + parseInt(queryByDisk[0].video_num));
+    //信息公开数
+    //$(".message_count").html(sum(xinxi_num));
+    $(".message_count").html(queryByStat[0].i_mulinfos + queryByStat[0].i_cusinfos + queryByStat[0].i_metainfos);
+
+    $("#database_num").html(parseInt(queryByDisk[0].database_num));
+    $("#file_num").html(parseInt(queryByDisk[0].file_num));
+    $("#video_num").html(parseInt(queryByDisk[0].video_num));
+
+    //热点文章
+    queryByArticle = [[${queryByArticle}]];
+    queryByArticle = eval('(' + queryByArticle + ')');
+
+    //热门网站
+    queryByWebsite = [[${queryByWebsite}]];
+    queryByWebsite = eval('(' + queryByWebsite + ')');
+    /* for(var i=0;i<queryByWebsite.length;i++){
+        $(".hot_list .list"+(i+1)+" i").html(queryByWebsite[i].web_name);
+        $(".hot_list .list"+(i+1)+" b").html((queryByWebsite[i].view_num));
+    } */
+
+
+
+    //每天访问量
+    var queryByClick = [[${queryByClick}]];
+    queryByClick = eval('('+queryByClick+')');
+    click_num = [];
+    city_name = [];
+    for (var i in queryByClick) {
+        city_name.push(queryByClick[i].city_name);
+        click_num.push(queryByClick[i].click_num);
+    }
+
+    var queryByPoparticle = [[${queryByPoparticle}]];
+    queryByPoparticle = eval('(' + queryByPoparticle +')');
+    var dataPoparticle = [];
+
+    for (var i = 0; i < queryByPoparticle.length; i++) {
+        var reg = new RegExp("<br/>", "g");
+        queryByPoparticle[i].article_title = (queryByPoparticle[i].article_title).replace(reg, "");
+        var obj = new mapObj2(queryByPoparticle[i].article_title, Number(queryByPoparticle[i].view_num), queryByPoparticle[i].article_url);
+        dataPoparticle.push(obj);
+    }
+    for (var i = 0; i < queryByArticle.length; i++) {
+        var reg = new RegExp("<br/>", "g");
+        queryByArticle[i].article_title = (queryByArticle[i].article_title).replace(reg, "");
+        var obj = new mapObj2(queryByArticle[i].article_title, Number(queryByArticle[i].view_num), queryByArticle[i].article_url);
+        dataPoparticle.push(obj)
+    }
+
+    dataPoparticle = dataPoparticle.sort(compare);
+    var html = "";
+    for (var i = 0; i < dataPoparticle.length; i++) {
+        var num = (i + 1) % 10;
+        if (num == 0) {
+            num = 10;
+        }
+        html += '<li class="article' + num + '"><a target="_blank" href="' + dataPoparticle[i].url + '" title="' + dataPoparticle[i].name + '">' + dataPoparticle[i].name + '</a><i>' + dataPoparticle[i].value + '</i></li>';
+    }
+    $(".article_list").html(html);
+    var queryByPopWeb = [[${queryByPopWeb}]];
+    queryByPopWeb = eval('(' + queryByPopWeb + ')');
+    var dataWeb = [];
+    for (var i = 0; i < queryByPopWeb.length; i++) {
+        var obj = new mapObj(queryByPopWeb[i].web_name, Number(queryByPopWeb[i].view_num));
+        dataWeb.push(obj);
+    }
+    for (var i = 0; i < queryByWebsite.length; i++) {
+        var obj = new mapObj(queryByWebsite[i].web_name, Number(queryByWebsite[i].view_num));
+        dataWeb.push(obj);
+    }
+
+    dataWeb = dataWeb.sort(compare);
+    var html = "";
+    for (var i = 0; i < dataWeb.length; i++) {
+        /* $(".hot_list .list"+(i+1)+" i").html(dataWeb[i].name);
+        $(".hot_list .list"+(i+1)+" b").html((dataWeb[i].value)); */
+        var num = (i + 1) % 5;
+        if (num == 0) {
+            num = 5;
+        }
+        html += '<li class="list' + num + '"><span>' + (i + 1) + '</span><i>' + dataWeb[i].name + '</i><b>' + dataWeb[i].value + '</b></li>';
+    }
+    $(".hot_list").html(html);
+    queryByDailyUserStat =[[ ${queryByDailyUserStat}]];
+    queryByDailyUserStat = eval('('+queryByDailyUserStat+')');
+    queryByWebStat =[[${queryByWebStat}]];
+    queryByWebStat = eval('(' + queryByWebStat + ')');
+    var columnData = [];
+    for (var i = 0; i < queryByWebStat.length; i++) {
+        var obj = new mapObj(queryByWebStat[i].vc_webname, Number(queryByWebStat[i].i_colsum));
+        columnData.push(obj);
+    }
+    for (var i = 0; i < queryByBasic.length; i++) {
+        var obj = new mapObj(queryByBasic[i].city_name, Number(queryByBasic[i].chnls_num));
+        columnData.push(obj);
+    }
+    columnData = columnData.sort(compare);
+    //栏目开设情况
+    var html = "";
+    for (var i = 0; i < columnData.length; i++) {
+        /* $(".top10 .li"+(i+1)+" i").html(columnData[i].name);
+        $(".top10 .li"+(i+1)+" span").html(columnData[i].value); */
+        var num = (i + 1) % 5;
+        if (num == 0) {
+            num = 5;
+        }
+        html += '<li class="lis li' + num + '" ><p>No.' + (i + 1) + '<i>' + columnData[i].name + '</i><span>' + columnData[i].value + '</span></p></li>';
+    }
+    $(".top10").html(html);
+
+
+</script>
+<script src="js/appService/unitTech/index.js" th:src="@{/js/appService/unitTech/index.js}"></script>
+<script type="text/javascript">
+    /* 列表轮播函数 */
+    var doscroll = function ($parent) {
+        var $first = $parent.find('li:first');
+        var marginTop = parseInt($first.css("marginTop"));
+        var height = $first.height() + marginTop;
+        $first.animate({
+            marginTop: -height + 'px'
+        }, 500, function () {
+            $first.css('marginTop', marginTop).appendTo($parent);
+        });
+    };
+
+    var $hot_list = $('.hot_list');
+    var $article_list = $(".article_list");
+    var $top10 = $(".top10");
+    var $web_list = $(".web_list");
+
+
+    setInterval(function () {
+        doscroll($hot_list);
+        doscroll($article_list);
+        doscroll($top10);
+        doscroll($web_list);
+    }, 2000);
+</script>
+</html>
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>山东省政务信息资源整合共享可视化平台</title>
+    <link href="css/index/style.css" th:href="@{/css/index/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+
+<body>
+<p class="system openData"></p>
+<p class="system exchange"></p>
+<p class="system unit_tech"></p>
+<p class="system mail"></p>
+<p class="system unitIdentify"></p>
+<p class="system service"></p>
+<video autoplay="autoplay" loop="loop" muted="muted">
+    <source src="img/index/bg.mp4" th:src="@{/img/index/bg.mp4}" type="video/mp4"></source>
+    <source src="img/index/bg.Ogg" th:src="@{/img/index/bg.Ogg}" type="video/ogg"></source>
+    <source src="img/index/bg.webm" th:src="@{/img/index/bg.webm}" type="video/webm"></source>
+</video>
+</body>
+<script type="text/javascript">
+    (function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a, b;
+        if (pingmu_width >= 3840) {
+            a = (pingmu_height / 2160).toFixed(8);
+            b = (pingmu_width / 3840).toFixed(8);
+
+        } else {
+            a = (pingmu_height / 1080).toFixed(8);
+            b = (pingmu_width / 1920).toFixed(8);
+        }
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    })();
+    window.addEventListener('resize', function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a = (pingmu_height / 1080).toFixed(8);
+        var b = (pingmu_width / 1920).toFixed(8);
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    });
+</script>
+<script>
+    $(".openData").click(function () {
+        window.open("openData");
+    });
+    $(".exchange").click(function () {
+        window.open("http://59.206.202.178:81/screen/");
+    });
+    $(".mail").click(function () {
+        window.open("officialMail");
+    });
+    $(".unitIdentify").click(function () {
+        window.open("unitIdentify");
+    });
+    $(".service").click(function () {
+        window.open("http://172.20.232.1/szsf/csg/szsf/index");
+    });
+    $(".unit_tech").click(function () {
+        window.open("unitTeach");
+    });
+</script>
+
+
+</html>

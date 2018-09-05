@@ -1,0 +1,958 @@
+<!DOCTYPE HTML >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公务邮箱</title>
+    <link
+            href="css/officialMail/style.css" th:href="@{/css/officialMail/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="js/echarts.min.js" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<body>
+<div class="header">
+    <a href="index" class="back">
+        <span></span>返回
+    </a>
+    <p class="timer">2018 年 8 月 20 日 &nbsp;&nbsp;&nbsp; 星期一
+        &nbsp;&nbsp;&nbsp; 15:51</p>
+</div>
+<div class="content_top">
+    <div class="mail_receive">
+        <p class="content_title">收发件情况</p>
+        <div class="mail_receive_content">
+            <p class="moudle_title">
+                <span class="title_icon"></span> <span class="title_bg">累计收发</span>
+            </p>
+            <p class="echarts_top">
+                <span class="left_num sum_num_send_rate">28%</span> <span
+                    class="right_num sum_num_receive_rate">72%</span>
+            </p>
+            <div id="count_num"></div>
+            <p class="echarts_top">
+                <span class="left_num sum_send_num"> 发：19864 </span> <span
+                    class="right_num sum_receive_num"> 收：32972 </span>
+            </p>
+
+            <p class="echarts_top" style="margin-top: 35px;">
+                <span class="left_num sum_send_gb_rate">64%</span> <span
+                    class="right_num sum_receive_gb_rate">36%</span>
+            </p>
+            <div id="count_flow"></div>
+            <p class="echarts_top">
+                <span class="left_num sum_send_gb"> 发：19864 </span> <span
+                    class="right_num sum_receive_gb"> 收：32972 </span>
+            </p>
+            <p class="moudle_title" style="margin-top: 60px;">
+                <span class="title_icon"></span> <span class="title_bg">今日收发</span>
+            </p>
+            <p class="echarts_top">
+                <span class="left_num day_num_send_rate">38%</span> <span
+                    class="right_num day_num_receive_rate">62%</span>
+            </p>
+            <div id="day_num"></div>
+            <p class="echarts_top">
+                <span class="left_num day_send_num"> 发：814 </span> <span
+                    class="right_num day_receive_num"> 收：1272 </span>
+            </p>
+
+            <p class="echarts_top" style="margin-top: 35px;">
+                <span class="left_num day_send_gb_rate">64%</span> <span
+                    class="right_num day_receive_gb_rate">36%</span>
+            </p>
+            <div id="day_flow"></div>
+            <p class="echarts_top">
+                <span class="left_num day_send_gb"> 发：0.71GB </span> <span
+                    class="right_num day_receive_gb"> 收：0.45GB </span>
+            </p>
+            <p class="moudle_title" style="margin-top: 60px;">
+                <span class="title_icon"></span> <span class="title_bg">近期邮件收发频数</span>
+            </p>
+            <div id="mail_rate"></div>
+        </div>
+    </div>
+    <div class="user_group">
+        <p class="content_title" style="margin-top: 28px;">用户及组情况</p>
+        <div class="unit_access">
+            <p>接入省直单位</p>
+            <p class="num">74</p>
+        </div>
+        <div class="user_group_num">
+            <p>用户组</p>
+            <p class="num">1807</p>
+        </div>
+        <div class="user_register">
+            <p>注册用户数</p>
+            <p class="num">38347</p>
+        </div>
+        <div class="access_city">
+            <p>接入地市</p>
+            <p class="num">1</p>
+        </div>
+        <div class="login_group" id="user_login">
+        </div>
+
+    </div>
+    <div class="company_active">
+        <p class="content_title">当日单位活跃度排行</p>
+        <ul class="top10">
+            <li class="lis li1">
+                <p>
+                    No.1 <i>省公共资源交易中心</i> <span>103</span>
+                </p>
+            </li>
+            <li class="lis li2">
+                <p>
+                    No.2 <i>省煤炭工业局</i> <span>90</span>
+                </p>
+            </li>
+            <li class="lis li3">
+                <p>
+                    No.3 <i>省科技厅</i> <span>80</span>
+                </p>
+            </li>
+            <li class="lis li4">
+                <p>
+                    No.4 <i>省扶贫办</i> <span>72</span>
+                </p>
+            </li>
+            <li class="lis li5">
+                <p>
+                    No.5 <i>省国防科工办</i> <span>65</span>
+                </p>
+            </li>
+            <li class="lis li6">
+                <p>
+                    No.6 <i>省文化厅</i> <span>64</span>
+                </p>
+            </li>
+            <li class="lis li7">
+                <p>
+                    No.7 <i>省教育厅</i> <span>62</span>
+                </p>
+            </li>
+            <li class="lis li8">
+                <p>
+                    No.8 <i>省海洋和渔业厅</i> <span>50</span>
+                </p>
+            </li>
+            <li class="lis li9">
+                <p>
+                    No.9 <i>省食药监局</i> <span>49</span>
+                </p>
+            </li>
+            <li class="lis li10">
+                <p>
+                    No.10 <i>省民委(省宗教局)</i> <span>20</span>
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="content_bottom">
+    <div class="mail_index">
+        <p class="moudle_title">
+            <span class="title_icon"></span> <span class="title_bg">邮件指标</span>
+        </p>
+        <div id="mail_index_content"></div>
+    </div>
+    <div class="attack_num">
+        <p class="moudle_title">
+            <span class="title_icon"></span> <span class="title_bg">近期受攻击次数</span>
+        </p>
+        <div id="attack_num_content"></div>
+    </div>
+    <div class="attack_site">
+        <p class="moudle_title" style="position: absolute; z-index: 222;">
+            <span class="title_icon"></span> <span class="title_bg">攻击者归属地   (累计)</span>
+        </p>
+        <div id="attack_site_content">
+            <a href="#">济南</a> <a href="#">北京</a> <a href="#">西班牙</a> <a
+                href="#">加拿大</a> <a href="#">南京</a> <a href="#">悉尼</a> <a href="#">合肥</a>
+            <a href="#">德州</a> <a href="#">徐州</a> <a href="#">荷兰</a>
+        </div>
+    </div>
+    <div class="attack_type">
+        <p class="moudle_title">
+            <span class="title_icon"></span> <span class="title_bg">攻击类型及攻击数占比     (累计)</span>
+        </p>
+        <div id="attack_type_content"></div>
+    </div>
+</div>
+</body>
+<script src="js/echartsmap/shandong.js" th:src="@{/js/echartsmap/shandong.js}"></script>
+<script
+        src="js/echartsImg/echartsImg.js" th:src="@{/js/echartsImg/echartsImg.js}"></script>
+<script src="js/tagcloud.js" th:src="@{/js/tagcloud.js}"></script>
+<script>
+    (function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a, b;
+        if (pingmu_width >= 3840) {
+            a = (pingmu_height / 2160).toFixed(8);
+            b = (pingmu_width / 3840).toFixed(8);
+
+        } else {
+            a = (pingmu_height / 1080).toFixed(8);
+            b = (pingmu_width / 1920).toFixed(8);
+        }
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    })();
+    window.addEventListener('resize', function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a = (pingmu_height / 1080).toFixed(8);
+        var b = (pingmu_width / 1920).toFixed(8);
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    });
+</script>
+<script type="text/javascript">
+    tagcloud({
+        selector: "#attack_site_content", //元素选择器
+        fontsize: 16, //基本字体大小, 单位px
+        radius: 70, //滚动半径, 单位px
+        mspeed: "normal", //滚动最大速度, 取值: slow, normal(默认), fast
+        ispeed: "normal", //滚动初速度, 取值: slow, normal(默认), fast
+        direction: 135, //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+        keep: false
+        //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
+    });
+</script>
+<script th:inline="javascript">
+    debugger;
+    /*当日单位活跃度排行  */
+    var queryByDeptActive =[[ ${queryByDeptActive}]];
+    queryByDeptActive = eval('('+queryByDeptActive+')')
+    console.log(queryByDeptActive)
+
+    var html = "";
+    for (var i = 0; i < queryByDeptActive.length; i++) {
+        var num = (i + 1) % 10;
+        if (num == 0) {
+            num = 10;
+        }
+        html += '<li class="lis li' + num + '" ><p>No.' + (i + 1) + '<i>' + queryByDeptActive[i].org_name + '</i><span>' + (queryByDeptActive[i].usage_rate).toFixed(2) + ' % </span></p></li>';
+        /* $(".top10 .li"+(i+1)+" i").html(queryByDeptActive[i].org_name);
+        $(".top10 .li"+(i+1)+" span").html((queryByDeptActive[i].usage_rate*100).toFixed(2)+" %"); */
+    }
+    $(".top10").html(html);
+    //用户、组情况
+    var queryByUserLog = [[${queryByUserLog}]];
+    queryByUserLog = eval('(' + queryByUserLog +')');
+    /* 少接入单位数 */
+    $(".user_group_num .num").html(queryByUserLog[0].group_num);
+    $(".user_register .num").html(queryByUserLog[0].user_num);
+    //本周邮件收发频数
+    var queryByMailLog = [[${queryByMailLog}]];
+    queryByMailLog = eval('(' + queryByMailLog + ')');
+    var date_time = [];
+    var send_count = [];
+    for (var i in queryByMailLog) {
+        date_time.push(queryByMailLog[i].date.substring(5));
+        send_count.push(queryByMailLog[i].send_num
+            + queryByMailLog[i].receive_num);
+    }
+    var max = send_count[0];
+    for (var i = 0; i < send_count.length - 1; i++) {
+        max = max < send_count[i + 1] ? send_count[i + 1] : max
+    }
+    var maxArr = [];
+    for (var i = 0; i < send_count.length; i++) {
+        maxArr.push(max + 500);
+    }
+    var mail_rate = echarts.init(document.getElementById("mail_rate"));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+                if (params.seriesType == 'bar') {
+                    return '';
+                } else {
+                    return params.name + ": " + params.value;
+                }
+            }
+        },
+        grid: {
+            left: 50,
+            right: 10,
+            bottom: 20,
+        },
+        xAxis: {
+            type: 'category',
+            position: 'bottom',
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#062A78',
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                color: '#9faddd',
+                fontSize: 11
+            },
+            data: date_time,
+        },
+        yAxis: {
+            name: '频数',
+            nameTextStyle: {
+                color: '#9faddd'
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    opacity: .5,
+                    color: '#062A78',
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            splitLine: {
+                show: false,
+            },
+            axisLabel: {
+                color: '#9faddd',
+                fontSize: 11
+
+            }
+        },
+        series: [{
+            zlevel: 2,
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 5,
+            showSymbol: true,
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(255,246,11,.5)'
+                    }, {
+                        offset: 1,
+                        color: 'rgba(255,255,255, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(232,239,71)',
+                    borderColor: 'rgba(255,246,11,0.2)',
+                    borderWidth: 1
+
+                }
+            },
+            data: send_count
+        }, {
+            zlevel: 1,
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    show: true,
+                    color: '#0A215A',
+                    opacity: .6
+                }
+            },
+            barWidth: '50%',
+            barGap: '-100%',
+            data: maxArr,
+        }],
+    };
+    mail_rate.setOption(option);
+    var queryByMailLogSum =[[${queryByMailLogSum}]];
+    queryByMailLogSum = eval('(' + queryByMailLogSum + ')');
+    /* 累计收发 */
+    /* 收发数量占比 */
+    var num_send_rate = (queryByMailLogSum[0].send_num / (queryByMailLogSum[0].receive_num + queryByMailLogSum[0].send_num))
+        .toFixed(2);
+    var num_receive_rate = (1 - num_send_rate).toFixed(2);
+    var gb_send_rate = (queryByMailLogSum[0].send_size / (queryByMailLogSum[0].receive_size + queryByMailLogSum[0].send_size))
+        .toFixed(2);
+    var gb_receive_rate = (1 - gb_send_rate).toFixed(2);
+
+    var day_num_send_rate = (queryByMailLog[queryByMailLog.length - 1].send_num / (queryByMailLog[queryByMailLog.length - 1].receive_num + queryByMailLog[queryByMailLog.length - 1].send_num))
+        .toFixed(2);
+    var day_num_receive_rate = (1 - day_num_send_rate).toFixed(2);
+
+    var day_gb_send_rate = (queryByMailLog[queryByMailLog.length - 1].send_size / (queryByMailLog[queryByMailLog.length - 1].receive_size + queryByMailLog[queryByMailLog.length - 1].send_size))
+        .toFixed(2);
+    var day_gb_receive_rate = (1 - day_gb_send_rate).toFixed(2);
+
+    $(".sum_num_receive_rate").html(num_receive_rate * 100 + "%");
+    $(".sum_num_send_rate").html(num_send_rate * 100 + "%");
+    $(".sum_send_gb_rate").html(gb_send_rate * 100 + "%");
+    $(".sum_receive_gb_rate").html(gb_receive_rate * 100 + "%");
+
+    $(".sum_send_num").html("发件量 ：" + queryByMailLogSum[0].send_num);
+    $(".sum_receive_num").html("收件量 ：" + queryByMailLogSum[0].receive_num);
+    $(".sum_send_gb").html(
+        "发件流量 ："
+        + (queryByMailLogSum[0].send_size / 1024 / 1024 / 1024)
+            .toFixed(2) + "GB");
+    $(".sum_receive_gb").html(
+        "收件流量 ："
+        + (queryByMailLogSum[0].receive_size / 1024 / 1024 / 1024)
+            .toFixed(2) + "GB");
+
+    $(".day_num_receive_rate").html(
+        day_num_receive_rate * 100 + "%");
+    $(".day_num_send_rate").html(day_num_send_rate * 100 + "%");
+    $(".day_send_gb_rate").html(day_gb_send_rate * 100 + "%");
+    $(".day_receive_gb_rate")
+        .html(day_gb_receive_rate * 100 + "%");
+
+    $(".day_send_num").html(
+        "发件量 ：" + queryByMailLog[queryByMailLog.length - 1].send_num);
+    $(".day_receive_num").html(
+        "收件量 ：" + queryByMailLog[queryByMailLog.length - 1].receive_num);
+    $(".day_send_gb")
+        .html(
+            "发件流量 ："
+            + (queryByMailLog[queryByMailLog.length - 1].send_size / 1024 / 1024 / 1024)
+                .toFixed(2) + "GB");
+    $(".day_receive_gb")
+        .html(
+            "收件流量 ："
+            + (queryByMailLog[queryByMailLog.length - 1].receive_size / 1024 / 1024 / 1024)
+                .toFixed(2) + "GB");
+
+    /* 对比条函数 */
+    function xbar(leftValue, rightValue) {
+        return {
+            color: ['#fff600', '#60fffc'],
+            xAxis: [{
+                type: 'value',
+                show: false
+            }],
+            yAxis: [{
+                type: 'category',
+                show: false,
+                data: ['邮件比例']
+            }],
+            series: [{
+                type: 'bar',
+                stack: '邮件比例',
+                barWidth: 10,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'left',
+                        top: '10%'
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        barBorderRadius: [100, 100, 100, 100],
+                    }
+                },
+                data: [{
+                    name: '垃圾',
+                    value: leftValue,
+
+                }]
+            }, {
+                type: 'bar',
+                stack: '邮件比例',
+                barWidth: 10,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'top'
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        barBorderRadius: [100, 100, 100, 100],
+                    }
+                },
+                data: [{
+                    name: '病毒',
+                    value: rightValue,
+
+                }]
+            }]
+        };
+    }
+
+    var count_num = echarts.init(document.getElementById("count_num"));
+    var option = xbar(num_send_rate, num_receive_rate);
+    count_num.setOption(option);
+    var count_flow = echarts.init(document.getElementById("count_flow"));
+    var option = xbar(gb_send_rate, gb_receive_rate);
+    count_flow.setOption(option);
+
+    var day_num = echarts.init(document.getElementById("day_num"));
+    var option = xbar(day_num_send_rate, day_num_receive_rate);
+    day_num.setOption(option);
+    var day_flow = echarts.init(document.getElementById("day_flow"));
+    var option = xbar(day_gb_send_rate, day_gb_receive_rate);
+    day_flow.setOption(option);
+
+    //攻击次数
+    var queryByAttackNum =[[ ${queryByAttackNum}]];
+    queryByAttackNum = eval('('+queryByAttackNum+')');
+    var date = [];
+    var attNum = [];
+    for (var i in queryByAttackNum) {
+        date.push(queryByAttackNum[i].date.substring(5));
+        attNum.push(queryByAttackNum[i].attack_num);
+    }
+    var max = attNum[0];
+    for (var i = 0; i < attNum.length - 1; i++) {
+        max = max < attNum[i + 1] ? attNum[i + 1] : max
+    }
+    var maxArr = [];
+    for (var i = 0; i < attNum.length; i++) {
+        maxArr.push(max + 500);
+    }
+    var attack_num_content = echarts.init(document
+        .getElementById("attack_num_content"));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+                if (params.seriesType == 'bar') {
+                    return '';
+                } else {
+                    return params.name + ": " + params.value;
+                }
+            }
+        },
+        legend: {
+            data: ["受攻击次数"],
+            textStyle: {
+                color: "#fff",
+            },
+            right: 30,
+
+
+        },
+        grid: {
+            left: 50,
+            right: 10,
+            bottom: 20,
+            top: 20,
+        },
+        xAxis: {
+            type: 'category',
+            position: 'bottom',
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    color: '#062A78',
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                color: '#a4beff',
+                fontSize: 14
+            },
+            data: date,
+        },
+        yAxis: {
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    opacity: 1,
+                    color: '#062A78',
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            splitLine: {
+                show: false,
+            },
+            axisLabel: {
+                color: '#a4beff',
+                fontSize: 14
+
+            }
+        },
+        series: [{
+            zlevel: 2,
+            name: '受攻击次数',
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 5,
+            showSymbol: true,
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0,255,246,.5)'
+                    }, {
+                        offset: 1,
+                        color: 'rgba(255,255,255, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(0,255,246)',
+                    borderColor: 'rgba(0,255,246,0.2)',
+                    borderWidth: 1
+
+                }
+            },
+            data: attNum
+        }, {
+            zlevel: 1,
+            name: '占位背景',
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    show: true,
+                    color: '#0A215A',
+                    opacity: .6
+                }
+            },
+            barWidth: '50%',
+            barGap: '-100%',
+            data: maxArr,
+        }],
+    };
+    attack_num_content.setOption(option);
+    /*攻击类型  */
+    var queryByAttackType = [[${queryByAttackType}]];
+    queryByAttackType = eval('(' + queryByAttackType +')');
+    var ringImg = [{
+        name: '区域位置异常',
+        value: queryByAttackType[0].attack_num
+    }, {
+        name: '境外访问检测',
+        value: queryByAttackType[1].attack_num
+    }, {
+        name: '暴力破解',
+        value: queryByAttackType[2].attack_num
+    },];
+    var attack_type_content = echarts.init(document
+        .getElementById("attack_type_content"));
+    var option = {
+        tooltip: {
+            show: true,
+        },
+        color: ["#09FFAC", "#FFF000", "#176CFF", "#5EEFFF"],
+        legend: [{
+            orient: 'vertical',
+            bottom: 40,
+            right: 30,
+            data: ['区域位置异常', '境外访问检测', '暴力破解'],
+            textStyle: {
+                color: '#fff'
+            }
+        }],
+        series: [{
+            type: 'pie',
+            radius: ['50%', '65%'],
+            center: ['40%', '50%'],
+            tooltip: {
+                show: true,
+                formatter: '{b}\n{d}%'
+            },
+            avoidLabelOverlap: false,
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        formatter: '{b}\n{d}%',
+                    },
+                    labelLine: {
+                        show: true
+                    },
+                },
+            },
+
+            data: ringImg
+        }]
+    };
+    attack_type_content.setOption(option);
+
+    /* 饼图 */
+
+
+    queryBySpam =[[ ${queryBySpam}]];
+    queryBySpam = eval('(' + queryBySpam + ')');
+    var mail_index_content = echarts.init(document.getElementById("mail_index_content"));
+    var option = {
+        tooltip: {
+            show: true,
+        },
+        color: ["#0079FF", "#00FFFC", "#F0FF00", "#00FF72"],
+        legend: [{
+            orient: 'vertical',
+            top: 40,
+            right: 120,
+            data: ['垃圾邮件数', '病毒邮件'],
+            textStyle: {
+                fontSize: 14,
+                color: '#fff'
+            }
+        },
+            {
+                orient: 'horizontal',
+                bottom: 10,
+                right: 10,
+                data: ['被拒连接数', '正常连接数'],
+                textStyle: {
+                    fontSize: 14,
+                    color: '#fff'
+                }
+            }],
+
+        series: [{
+            type: 'pie',
+            radius: ['40%', '55%'],
+            center: ['20%', '40%'],
+            tooltip: {
+                show: true,
+                formatter: '{b}: {d}%'
+            },
+
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        formatter: '{b}\{d}%',
+                        position: 'center',
+                    },
+                    labelLine: {
+                        show: true
+                    },
+                }
+            },
+
+            data: [{
+                value: queryBySpam[0].spam_count,
+                name: '垃圾邮件数'
+            },
+                {
+                    value: queryBySpam[0].virus_count,
+                    name: '病毒邮件'
+                },
+
+            ]
+        },
+            {
+                type: 'pie',
+                radius: '35%',
+                center: '67%',
+                tooltip: {
+                    show: true,
+                    formatter: '{b}: {d}%'
+                },
+
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true,
+                            formatter: '{b}\n{d}%'
+                        },
+                        labelLine: {
+                            show: true
+                        },
+                    }
+                },
+
+                data: [{
+                    value: queryBySpam[0].reject_count,
+                    name: '被拒连接数'
+                },
+                    {
+                        value: queryBySpam[0].normal_count,
+                        name: '正常连接数'
+                    },
+                ]
+            }
+        ]
+    }
+
+    mail_index_content.setOption(option);
+    var queryByUserLogin =[[${queryByUserLogin}]];
+    queryByUserLogin = eval('('+queryByUserLogin+')');
+    var xData = [];
+    var yData = [];
+    for (var i = 0; i < queryByUserLogin.length; i++) {
+        xData.push(queryByUserLogin[i].date.substring(5));
+        yData.push(queryByUserLogin[i].logins_num);
+    }
+    var user_login = echarts.init(document.getElementById("user_login"));
+
+    var option = {
+        title: {
+            text: '近期登录用户',
+            textStyle: {
+                color: '#fff',
+                fontSize: 16
+            },
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'line',
+                lineStyle: {
+                    opacity: 0
+                }
+            },
+            textStyle: {
+                fontSize: 24
+            }
+        },
+        grid: {
+            left: 55,
+            right: 20,
+            bottom: 20,
+            top: 50,
+        },
+        xAxis: [{
+            type: 'category',
+            gridIndex: 0,
+            data: xData,
+            axisTick: {
+                alignWithLabel: true
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#3D6DD4'
+                }
+            },
+            axisLabel: {
+                color: '#3D6DD4',
+                fontSize: 14
+            }
+        }],
+        yAxis: [{
+            type: 'value',
+            gridIndex: 0,
+            splitLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#3D6DD4'
+                }
+            },
+            axisLabel: {
+                color: '#3D6DD4',
+                fontSize: 14
+            }
+        },
+        ],
+        series: [{
+            type: 'bar',
+            barWidth: '22%',
+            xAxisIndex: 0,
+            yAxisIndex: 0,
+            itemStyle: {
+                normal: {
+                    barBorderRadius: 30,
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#00B6FC'
+
+                        },
+                            {
+                                offset: 1,
+                                color: '#0038FE'
+                            }
+                        ]
+                    )
+                }
+            },
+            data: yData,
+        },
+
+
+        ]
+    };
+    user_login.setOption(option);
+
+</script>
+<script>
+    $(function () {
+        setInterval(function () {
+            var myDate = new Date();
+            var year = myDate.getFullYear();
+            var month = myDate.getMonth() + 1;
+            var day = myDate.getDate()
+            var time = myDate.toLocaleTimeString();
+            var week = myDate.getDay();
+            switch (week) {
+                case 1 :
+                    week = "星期一";
+                    break;
+                case 2 :
+                    week = "星期二";
+                    break;
+                case 3 :
+                    week = "星期三";
+                    break;
+                case 4 :
+                    week = "星期四";
+                    break;
+                case 5 :
+                    week = "星期五";
+                    break;
+                case 6 :
+                    week = "星期六";
+                    break;
+                case 0 :
+                    week = "星期日";
+                    break;
+            }
+            var date = year + " 年 " + month + " 月 " + day + " 日 ";
+            var html = date + " &nbsp;&nbsp;" + week + " &nbsp;&nbsp;" + time;
+            $(".timer").html(html);
+        }, 1000);
+
+    });
+</script>
+<script type="text/javascript">
+    /* 列表轮播函数 */
+    var doscroll = function ($parent) {
+        var $first = $parent.find('li:first');
+        var marginTop = parseInt($first.css("marginTop"));
+        var height = $first.height() + marginTop;
+        $first.animate({
+            marginTop: -height + 'px'
+        }, 500, function () {
+            $first.css('marginTop', marginTop).appendTo($parent);
+        });
+    };
+
+    var $top10 = $('.top10');
+
+
+    setInterval(function () {
+        doscroll($top10);
+    }, 2000);
+</script>
+
+</html>
+

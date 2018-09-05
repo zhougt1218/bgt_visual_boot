@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: "microsoft yahei";
+    word-break: break-word;
+    background: white;
+}
+
+ul, li, dl, dd, dt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a, a:link, a:hover, a:active {
+    text-decoration: none;
+}
+
+.overflowH {
+    overflow: hidden;
+}
+
+div {
+    display: block;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/*@media (min-width: 1200px){
+	.container {
+	    width: 1200px;
+	}
+}*/
+.header {
+    padding: 10px;
+}
+
+.header h1 {
+    padding: 0;
+    margin: 0;
+    color: #1155CC
+}
+
+.logo {
+    display: block;
+    margin: 15px auto 10px;
+}
+
+.main {
+    background: url(../../img/login/body_bg.png) center no-repeat #1f529d;
+    height: 500px;
+    width: 100%;
+}
+
+.login {
+    margin-top: 60px;
+    padding: 15px;
+    float: right;
+    margin-right: 20px;
+    background: rgba(255, 255, 255, .2);
+}
+
+.loginbox {
+    width: 340px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+}
+
+.user {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.loginbox .intext {
+    height: 38px;
+    padding-left: 40px;
+}
+
+.loginbox .btn {
+    height: 38px;
+    font-size: 18px;
+    background: #2769b7;
+}
+
+.inuser {
+    background: url(../../img/login/icon_user.png) 10px center no-repeat;
+}
+
+.inpassword {
+    background: url(../../img/login/icon_password.png) 10px center no-repeat;
+}
+
+.loginbox .checkbox {
+    margin: 15px 0;
+}
+
+.copyright {
+    padding: 10px 0;
+    padding-top: 30px;
+}
+
+.copyright a {
+    display: inline;
+    cursor: pointer;
+    line-height: 30px;
+    margin: 0 5px;
+}
+
+.copyright * {
+    color: #666666;
+}
+
+@media only screen and (max-height: 650px) {
+    .main {
+        height: 450px;
+    }
+
+    .login {
+        margin-top: 40px;
+    }
+}
+
+@media only screen and (min-height: 800px) {
+    .main {
+        height: 550px;
+    }
+
+    .login {
+        margin-top: 80px;
+    }
+
+    .logo {
+        margin: 30px auto 20px;
+    }
+
+    .copyright {
+        padding: 15px 0;
+    }
+
+    .copyright p {
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.sdyy.springboot.bgt.bgt_visual_boot.mapper.UnifiedSearchMapper">
+		
+	<!-- 按组织机构获取资源统计信息表  from open_data_org_statistics -->
+	<select id="queryByDayLog" resultType="QueryByDayLog">
+		SELECT
+			date( askdate ) AS askdate,
+			totalpvamount,
+			pvamount,
+			totalindex,
+			creatindex,
+			smartaskamount 
+		FROM
+			js_alalysis_daylog 
+		WHERE
+			DATE_SUB( CURDATE( ), INTERVAL 7 DAY ) &lt;= date( askdate )
+	</select>
+	
+	<select id="queryByHotword" resultType="QueryByHotword">
+		SELECT
+			word,
+			weight,
+			date( createdate ) AS createdate 
+		FROM
+			js_hotword_alalysis_rank 
+		WHERE
+			date( createdate ) = ( SELECT max( date( createdate ) ) FROM js_hotword_alalysis_rank )
+	</select>
+	
+</mapper> 

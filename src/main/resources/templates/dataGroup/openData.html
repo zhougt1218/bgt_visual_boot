@@ -1,0 +1,486 @@
+<!DOCTYPE HTML >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>山东公共数据开放平台</title>
+    <link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="css/openData/style.css" th:href="@{/css/openData/style.css}" rel="stylesheet"/>
+    <link href="css/openData/dataStatistics.css" th:href="@{/css/openData/dataStatistics.css}" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <p class="modal_title">数据目录详情</p>
+    <p class="img4_num"><span class="dept">132132</span> <span class="city">131321</span>
+    <p>
+    <div class="modal_div modal_icon" id="modal_img4">
+        <!-- <h3 class="modal_dept_num">
+            <span class="modal_img"></span>  <span class="modal_num"> 100</span> <br>省直
+        </h3>
+        <h3 class="modal_city_num">
+            <span class="modal_img"></span>  <span class="modal_num"> 100</span> <br>地市
+        </h3> -->
+
+
+    </div>
+    <div class="modal_div modal_dept" id="modal_img1">
+
+    </div>
+    <div class="modal_div modal_city" id="modal_img2">
+
+    </div>
+    <div class="modal_div modal_theme" id="modal_img3">
+
+    </div>
+    <p class="modal_bottom">
+        <button type="button" class="btn btn-default" id="close">关闭</button>
+    </p>
+
+</div>
+<div class="overflowH header">
+    <img src="img/openData/logo_bg.png" th:src="@{/img/openData/logo_bg.png}"/>
+    <a href="index" th:href="@{/index}" class="back"><span></span>返回</a>
+</div>
+<div class="main">
+    <div class="left_content">
+        <div class="left_top">
+            <p class="title"><span class="icon"></span>资源概览</p>
+            <div class="list odd">
+                <div class="left_list">
+                    <img src="img/openData/icon1.png" th:src="@{/img/openData/icon1.png}"/>
+                    <p class="fcolor" id="cata"><span class="cata_num first_num ">200</span><br/>数据目录</p>
+                </div>
+                <div class="right_list">
+                    <p class="fcolor">
+								<span class="cata_icon">
+									
+								</span>
+                        省直
+                        <span class="cata_dept_num second_num">
+									100
+								</span>
+                    </p>
+                    <p class="fcolor">
+								<span class="cata_icon">
+									
+								</span>
+                        地市
+                        <span class="cata_city_num second_num">
+									100
+								</span>
+                    </p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="left_list">
+                    <img src="img/openData/icon2.png" th:src="@{/img/openData/icon2.png}"/>
+                    <p class="fcolor" id="data"><span class="data_num first_num ">200</span><br/>数据条数</p>
+                </div>
+                <div class="right_list">
+                    <p class="fcolor">
+								<span class="data_icon">
+									
+								</span>
+                        省直
+                        <span class="data_dept_num second_num">
+									100
+								</span>
+                    </p>
+                    <p class="fcolor">
+								<span class="data_icon">
+									
+								</span>
+                        地市
+                        <span class="data_city_num second_num">
+									100
+								</span>
+                    </p>
+                </div>
+            </div>
+            <div class="list odd">
+                <div class="left_list">
+                    <img src="img/openData/icon3.png" th:src="@{/img/openData/icon3.png}"/>
+                    <p class="fcolor" id="api"><span class="api_num first_num ">200</span><br/>API服务</p>
+                </div>
+                <div class="right_list">
+                    <p class="fcolor">
+								<span class="api_icon">
+									
+								</span>
+                        省直
+                        <span class="api_dept_num second_num">
+									100
+								</span>
+                    </p>
+                    <p class="fcolor">
+								<span class="api_icon">
+									
+								</span>
+                        地市
+                        <span class="api_city_num second_num">
+									100
+								</span>
+                    </p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="left_list">
+                    <img src="img/openData/icon4.png" th:src="@{/img/openData/icon4.png}"/>
+                    <p class="fcolor" id="file"><span class="file_num first_num ">30918842</span><br/>数据文件</p>
+                </div>
+                <div class="right_list">
+                    <p class="fcolor">
+								<span class="file_icon">
+									
+								</span>
+                        省直
+                        <span class="file_dept_num second_num">
+									100
+								</span>
+                    </p>
+                    <p class="fcolor">
+								<span class="file_icon">
+									
+								</span>
+                        地市
+                        <span class="file_city_num second_num">
+									100
+								</span>
+                    </p>
+                </div>
+            </div>
+            <p class="odd apply">应用量<span class="apply_num">51</span></p>
+        </div>
+        <div class="left_bottom">
+            <h3 class="web_title">网站运行</h3>
+            <div class="web_list odd">
+                <div class="left_list">
+                    <img style="position: relative;top: 10px;" src="img/openData/tj_icon1.png" th:src="@{/img/openData/tj_icon1.png}"/>
+                    <p class="cata_visit">
+                        累计访问<br/>
+                        <span class="cata_visit_num">15802</span>
+                    </p>
+                </div>
+                <div class="right_list">
+                    <img src="img/openData/tj_icon2.png" th:src="@{/img/openData/tj_icon2.png}"/>
+                    <p class="file_down">
+                        累计注册用户<br/>
+                        <span class="file_down_num">15802</span>
+                    </p>
+                </div>
+            </div>
+            <div id="website">
+
+            </div>
+        </div>
+    </div>
+    <div class="center_content">
+        <div class="center_title">
+            <div class="title_list title_list1">
+                <p class="title_title activeList"><span class="title_icon icon1"></span>目录累计访问</p>
+                <!-- <p class="title_bg cata_sum_num">1888888.88</p> -->
+                <div class="title_bg">
+                    <div class="dataStatistics" id="cata_use">
+                        <!-- <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set set_last"></div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="title_list title_list2">
+                <p class="title_title"><span class="title_icon icon2"></span>数据文件累计下载</p>
+                <!-- <p class="title_bg filedown_sum_num">1888888.88</p> -->
+                <div class="title_bg">
+                    <div class="dataStatistics" id="file_down">
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set set_last"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="title_list title_list3">
+                <p class="title_title"><span class="title_icon"></span>服务累计调用</p>
+                <!-- <p class="title_bg servisit_sum_num">1888888.88</p> -->
+                <div class="title_bg">
+                    <div class="dataStatistics" id="api_service">
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set"></div>
+                        <div class="digit_set set_last"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dept_count">
+            地市目录访问总量:<span class="dept_count_num">1333</span>
+        </div>
+        <div class="center_map" id="sd_map">
+
+        </div>
+        <div class="center_bottom" id="dept_img">
+
+        </div>
+    </div>
+    <div class="right_content">
+        <div class="right_top">
+            <p class="title"><span class="icon"></span>当日情况</p>
+            <div class="day_situ odd">
+                <p>目录访问<br/><span class="day_cata">15802</span></p>
+                <p style="width:40%">数据文件下载<br/><span class="day_down">15802</span></p>
+                <p>服务调用<br/><span class="day_service">15802</span></p>
+            </div>
+            <div id="day_line">
+
+            </div>
+        </div>
+        <div class="right_center">
+            <div class="titlebox">
+                <h3 class="title1">周热门</h3>
+                <ul class="ctrlbox ctrlbox1 pull-right">
+                    <li class="active">目录</li>
+                    <li>文件</li>
+                    <li>服务</li>
+                </ul>
+            </div>
+            <ul class="cata_detail">
+                <li>轨道交通2号线爆破作业期间道路交通 <span class="rankNum">1080次</span></li>
+                <li>轨道交通2号线爆破作业期间道路交通</li>
+                <li>轨道交通2号线爆破作业期间道路交通</li>
+                <li>轨道交通2号线爆破作业期间道路交通</li>
+                <li>轨道交通2号线爆破作业期间道路交通</li>
+            </ul>
+        </div>
+        <div class="right_bottom">
+            <h3>当前目录下载</h3>
+            <div class="curr_cata_title">
+                <span>部门名称</span><i>目录名称</i>
+            </div>
+            <ul class="curr_cata">
+                <!-- <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规kdasldkasdjklj lkjasdlkasj划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规kdasld</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li>
+                <li><span class="num">1</span><i>济南市规划局</i><b>济南市片区啊规划啊不行啊</b></li> -->
+            </ul>
+            <!-- <table cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>部门名称</th>
+                        <th>目录名称</th>
+                    </tr>
+                </thead>
+
+                    <tr>
+                        <td colspan="3">
+                        <div id="outer_box">
+                        <div id="inner_box">
+
+
+                        <table>
+                            <tbody>
+                    </tbody>
+                    </table>
+                    </div>
+                    </div>
+                        </td>
+                    </tr>
+
+            </table> -->
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade in"></div>
+</body>
+<script th:inline="javascript">
+    (function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a, b;
+        if (pingmu_width >= 3840) {
+            a = (pingmu_height / 2160).toFixed(8);
+            b = (pingmu_width / 3840).toFixed(8);
+
+        } else {
+            a = (pingmu_height / 1080).toFixed(8);
+            b = (pingmu_width / 1920).toFixed(8);
+        }
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    })();
+    window.addEventListener('resize', function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a = (pingmu_height / 1080).toFixed(8);
+        var b = (pingmu_width / 1920).toFixed(8);
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    });
+    //各省直部门所拥有的资源情况
+    var queryByOrg = [[${queryByOrg}]];
+    queryByOrg = eval('(' + queryByOrg + ')');
+    //山东省 总共拥有的资源情况 其中 app_count是 应用数
+    var queryByRegion =[[ ${queryByRegion}]];
+    queryByRegion = eval('(' + queryByRegion + ')');
+    //地市拥有的资源情况，其中山东省代表省直部门
+    var queryByCity = [[${queryByCity}]];
+    queryByCity = eval('(' + queryByCity + ')');
+    //分主题统计资源情况
+    var queryByGroup = [[${queryByGroup}]];
+    queryByGroup = eval('(' + queryByGroup + ')');
+
+    //各省直部门目录使用累计情况
+    var queryByCatalog =[[ ${queryByCatalog}]];
+    queryByCatalog = eval('(' + queryByCatalog + ')');
+    //各省直部门接口使用累计情况
+    var queryByAPI =[[ ${queryByAPI}]];
+    queryByAPI = eval('(' + queryByAPI + ')');
+    //数据文件累计下载情况
+    var queryByHotCatalog =[[ ${queryByHotCatalog}]];
+    queryByHotCatalog = eval('(' + queryByHotCatalog + ')');
+
+    //累计访问量
+    var queryByDaily =[[ ${queryByDaily}]];
+    queryByDaily = eval('(' + queryByDaily + ')');
+
+    //所有部门累计目录 访问量、下载量、 接口申请量、调用量
+    var queryByUse = [[${queryByUse}]];
+    queryByUse = eval('(' + queryByUse + ')');
+
+    //每个部门累计目录 访问量、下载量、 接口申请量、调用量
+    var queryByUseDay = [[${queryByUseDay}]];
+    queryByUseDay = eval('(' + queryByUseDay + ')');
+
+    var queryByWebDaily = [[${queryByWebDaily}]];
+    queryByWebDaily = eval('(' + queryByWebDaily + ')');
+
+    var queryByWeekCataView = [[${queryByWeekCataView}]];
+    queryByWeekCataView = eval('(' + queryByWeekCataView + ')');
+    var queryByWeekCataDown = [[${queryByWeekCataDown}]];
+    queryByWeekCataDown = eval('(' + queryByWeekCataDown + ')');
+    var queryByWeekCataAPI =[[ ${queryByWeekCataAPI}]];
+    queryByWeekCataAPI = eval('(' + queryByWeekCataAPI + ')');
+
+    var queryBySumCity = [[${queryBySumCity}]];
+    queryBySumCity = eval('(' + queryBySumCity + ')');
+    var queryBySumDept = [[${queryBySumDept}]];
+    queryBySumDept = eval('(' + queryBySumDept + ')');
+
+
+    //周热门目录下载
+    var queryByCataDownWeek =[[ ${queryByCataDownWeek}]];
+    queryByCataDownWeek = eval('(' + queryByCataDownWeek + ')');
+    //访问用户增量
+    var queryByVisitCount = [[${queryByVisitCount}]];
+    queryByVisitCount = eval('(' + queryByVisitCount + ')');
+
+    var queryByRegionDept = [[${queryByRegionDept}]];
+    queryByRegionDept = eval('(' + queryByRegionDept + ')');
+    var queryByRegionCity = [[${queryByRegionCity}]];
+    queryByRegionCity = eval('(' + queryByRegionCity + ')');
+
+</script>
+
+<script src="js/echarts.min.js" th:src="@{/js/echarts.min.js}"></script>
+<script src="js/echartsmap/shandong.js" th:src="@{/js/echartsmap/shandong.js}"></script>
+<script src="js/echartsImg/echartsImg.js" th:src="@{/js/echartsImg/echartsImg.js}"></script>
+<script src="js/openData/index.js" th:src="@{/js/openData/index.js}"></script>
+<script src="js/openData/jquery.dataStatistics.js" th:src="@{/js/openData/jquery.dataStatistics.js}"></script>
+<script>
+    $(".cata_sum_num").html(queryByUse[0].cata_visit_num, 0);
+
+    var html = "";
+    for (var i = 0; i < (queryByUse[0].cata_visit_num).toString().length; i++) {
+
+        if (i == (queryByUse[0].cata_visit_num).toString().length - 1) {
+            html += '<div class="digit_set set_last"></div>'
+        } else {
+            html += '<div class="digit_set"></div>';
+        }
+    }
+    $("#cata_use").html(html);
+
+    var html = "";
+    for (var i = 0; i < (queryByUse[0].cata_download_num).toString().length; i++) {
+
+        if (i == (queryByUse[0].cata_download_num).toString().length - 1) {
+            html += '<div class="digit_set set_last"></div>'
+        } else {
+            html += '<div class="digit_set"></div>';
+        }
+    }
+    $("#file_down").html(html);
+
+    var html = "";
+    for (var i = 0; i < (queryByUse[0].total_apply_count).toString().length; i++) {
+
+        if (i == (queryByUse[0].total_apply_count).toString().length - 1) {
+            html += '<div class="digit_set set_last"></div>'
+        } else {
+            html += '<div class="digit_set"></div>';
+        }
+    }
+    $("#api_service").html(html);
+
+    $(".filedown_sum_num").html(queryByUse[0].cata_download_num, 0);
+    $(".servisit_sum_num").html(queryByUse[0].total_apply_count, 0);
+    $(document).ready(function () {
+        $('#cata_use').dataStatistics({
+            min: (queryByUse[0].cata_visit_num - 50),
+            max: queryByUse[0].cata_visit_num,
+            time: 3000,
+            len: (queryByUse[0].cata_visit_num).toString().length
+        });
+        $('#file_down').dataStatistics({
+            min: (queryByUse[0].cata_download_num - 50),
+            max: queryByUse[0].cata_download_num,
+            time: 3000,
+            len: (queryByUse[0].cata_download_num).toString().length
+        });
+
+        $('#api_service').dataStatistics({
+            min: (queryByUse[0].total_apply_count - 50),
+            max: queryByUse[0].total_apply_count,
+            time: 3000,
+            len: (queryByUse[0].total_apply_count).toString().length
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    /* 列表轮播函数 */
+    var doscroll = function ($parent) {
+        var $first = $parent.find('li:first');
+        var marginTop = parseInt($first.css("marginTop"));
+        var height = $first.height() + marginTop;
+        $first.animate({
+            marginTop: -height + 'px'
+        }, 500, function () {
+            $first.css('marginTop', marginTop).appendTo($parent);
+        });
+    };
+
+    var $curr_cata = $('.curr_cata');
+
+
+    setInterval(function () {
+        doscroll($curr_cata);
+    }, 2000);
+</script>
+</html>
+

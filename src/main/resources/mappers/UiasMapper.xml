@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.sdyy.springboot.bgt.bgt_visual_boot.mapper.UiasMapper">
+		
+	<!-- 查询法人情况  from stats_corporation -->
+	<select id="queryByCor" resultType="QueryByCor">
+		SELECT
+			*
+		FROM
+			stats_corporation
+	</select>
+	
+	<!-- 查询总体接入情况  from stats_total -->
+	<select id="queryByTotal" resultType="QueryByTotal">
+		SELECT
+			*
+		FROM
+			stats_total
+	</select>
+	
+	<!--  查询用户注册情况 from stats_user -->
+	<select id="queryByUser" resultType="QueryByUser">
+		SELECT
+			*
+		FROM
+			stats_user
+	</select>
+	
+	<!-- 查询pv、uv -->
+	<select id="queryByPv" resultType="QueryByPv">
+		SELECT
+			*
+		FROM
+			stat_visit
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(statsDate)
+	</select>
+	
+	<select id="queryByProvince" resultType="QueryByProvince">
+		SELECT
+			B.province_cn_short AS province,
+			A.auth_num AS auth_num 
+		FROM
+			( SELECT province, auth_num FROM stat_auth_province WHERE auth_num != 0 ) A
+			LEFT JOIN ( SELECT province_cn, province_cn_short FROM stats__province_city_cn ) B ON A.province = B.province_cn 
+		ORDER BY
+			auth_num DESC
+	</select>
+	
+	<select id="queryByRegion" resultType="QueryByProvince">
+		SELECT
+			region AS province,
+			auth_num
+		FROM
+			stat_auth_region
+		ORDER BY
+			auth_num DESC
+	</select>
+	
+</mapper> 

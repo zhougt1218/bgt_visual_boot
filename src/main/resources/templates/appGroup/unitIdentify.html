@@ -1,0 +1,320 @@
+<!DOCTYPE HTML >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>统一身份认证</title>
+    <link href="css/appService/unitIdentify/style.css" th:href="@{/css/appService/unitIdentify/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="js/echarts.min.js" th:src="@{/js/echarts.min.js}"></script>
+    <script src="js/echartsmap/china-contour.js" th:src="@{/js/echartsmap/china-contour.js}"></script>
+    <script src="js/echartsmap/shandong.js" th:src="@{/js/echartsmap/shandong.js}"></script>
+</head>
+<body>
+<div class="header">
+    <a href="index" class="back"><span></span>返回</a>
+    <p class="timer">2018 年 8 月 20 日 &nbsp;&nbsp;&nbsp; 星期一 &nbsp;&nbsp;&nbsp; 15:51</p>
+</div>
+<div class="content">
+    <div class="left_content">
+        <div class="register_user">
+            <p class="module_title">注册用户占比</p>
+            <div class="register_left" id="register_img">
+
+            </div>
+            <div class="register_right">
+                <p class="subtitle2"><span class="cicle1"></span>个人注册总数</p>
+                <p class="data_content" id="authUserTotal">10000人</p>
+                <p class="subtitle2"><span class="cicle2"></span>个人实名用户数</p>
+                <p class="data_content" id="isAuthUser">10000人</p>
+            </div>
+        </div>
+        <div class="company_user">
+            <p class="module_title">企业用户占比</p>
+            <div class="company_left" id="company_user">
+
+            </div>
+            <div class="company_right">
+                <p class="subtitle2"><span style="background:#00FFFC" class="cicle1"></span>企业注册总数</p>
+                <p class="data_content" id="authCorpTotal">10000人</p>
+                <p class="subtitle2"><span class="cicle2"></span>企业实名用户数 </p>
+                <p class="data_content" id="isAuthCorp">10000人</p>
+            </div>
+        </div>
+        <div class="identify_type">
+            <p class="module_title">注册来源占比</p>
+            <div class="identify_content">
+                <div class="identify_top">
+                    <p class="others source_type">
+                        普通
+                        <br>
+                        <span class="num">
+									7120
+								</span>
+                        <span class="rate">
+									21 <i>%</i>
+								</span>
+                    </p>
+                    <p class="alipay source_type">
+                        支付宝
+                        <br>
+                        <span class="num">
+									1030
+								</span>
+                        <span class="rate">
+									28 <i>%</i>
+								</span>
+                    </p>
+                    <p class="wechat source_type">
+                        微信
+                        <br>
+                        <span class="num">
+									7120
+								</span>
+                        <span class="rate">
+									60 <i>%</i>
+								</span>
+                    </p>
+
+                </div>
+                <div class="identify_bottom">
+                    <p class="website source_type">
+                        网站
+                        <br>
+                        <span class="num">
+									7120
+								</span>
+                        <span class="rate">
+									21 <i>%</i>
+								</span>
+                    </p>
+                    <p class="phone source_type">
+                        手机
+                        <br>
+                        <span class="num">
+									7120
+								</span>
+                        <span class="rate">
+									21 <i>%</i>
+								</span>
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="type_top" id="identify">
+
+            </div> -->
+            <!-- <div class="type_bottom">
+                <div class="legend_list ordinary">
+                    <span></span>
+                    <p>
+                        <span>12156</span>
+                        <br />
+                        普通注册
+                    </p>
+
+                </div>
+                <div class="legend_list website">
+                    <span></span>
+                    <p>
+                        <span >200</span>
+                        <br />
+                        网站
+                    </p>
+
+                </div>
+                <div class="legend_list phone">
+                    <span></span>
+                    <p>
+                        <span >200</span>
+                        <br />
+                        手机
+                    </p>
+
+                </div>
+                <div class="legend_list alipay">
+                    <span></span>
+                    <p>
+                        <span >704</span>
+                        <br />
+                        支付宝
+                    </p>
+                </div>
+                <div class="legend_list wechat">
+                    <span></span>
+                    <p>
+                        <span >201</span>
+                        <br />
+                        微信
+                    </p>
+
+                </div>
+
+
+            </div> -->
+        </div>
+    </div>
+    <div class="middle_content">
+        <p class="middle_title">
+            认证用户总数
+        </p>
+        <p class="identify_num" id="allTotal">
+        </p>
+        <div class="china_img" id="user_map">
+
+        </div>
+    </div>
+    <div class="right_content">
+        <div class="system_count">
+            <p class="module_title">系统接入个数</p>
+            <p class="system_num"><span id="sysAccess">302</span>个</p>
+        </div>
+        <div class="user_count">
+            <p class="module_title">七日内访客量UV</p>
+            <div class="uv_img" id="uv_img">
+
+            </div>
+        </div>
+        <div class="page_count">
+            <p class="module_title">七日内访问量PV</p>
+            <div class="pv_img" id="pv_img">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/appService/unitIdentify/script.js" th:src="@{/js/appService/unitIdentify/script.js}"></script>
+<script src="js/echartsImg/echartsImg.js" th:src="@{/js/echartsImg/echartsImg.js}"></script>
+<script src="js/china.js" th:src="@{/js/china.js}"></script>
+<script src="js/echartsmap/shandong.js" th:src="@{/js/echartsmap/shandong.js}"></script>
+
+
+<script>
+    (function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a, b;
+        if (pingmu_width >= 3840) {
+            a = (pingmu_height / 2160).toFixed(8);
+            b = (pingmu_width / 3840).toFixed(8);
+
+        } else {
+            a = (pingmu_height / 1080).toFixed(8);
+            b = (pingmu_width / 1920).toFixed(8);
+        }
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    })();
+    window.addEventListener('resize', function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a = (pingmu_height / 1080).toFixed(8);
+        var b = (pingmu_width / 1920).toFixed(8);
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    });
+</script>
+<script th:inline="javascript">
+    var queryByCor =[[ ${queryByCor}]];
+    queryByCor = eval('(' + queryByCor + ')');
+    var queryByTotal =[[ ${queryByTotal}]];
+    queryByTotal = eval('(' + queryByTotal + ')');
+    var queryByUser = [[${queryByUser}]];
+    queryByUser = eval('(' + queryByUser + ')');
+    var queryByPv = [[${queryByPv}]];
+    queryByPv = eval('(' + queryByPv + ')');
+    //注册用户占比
+    isAuthUser = [];
+    unAuthUser = [];
+    for (var i in queryByUser) {
+        isAuthUser.push(queryByUser[i].isAuthUser);
+        unAuthUser.push(queryByUser[i].unAuthUser);
+        regSourcePC = queryByUser[i].regSourcePC;
+        regSourceMob = queryByUser[i].regSourceMob
+        regWayNormal = queryByUser[i].regWayNormal;
+        regWayAlipay = queryByUser[i].regWayAlipay;
+        regWayWeChat = queryByUser[i].regWayWeChat;
+    }
+
+    $(".others .num").html(regWayNormal);
+    $(".others .rate").html((regWayNormal / (regWayNormal + regWayAlipay + regWayWeChat)).toFixed(2) * 100 + '<i>%</i>');
+
+    $(".alipay .num").html(regWayAlipay);
+    $(".alipay .rate").html((regWayAlipay / (regWayNormal + regWayAlipay + regWayWeChat)).toFixed(2) * 100 + '<i>%</i>');
+
+    $(".wechat .num").html(regWayWeChat);
+    $(".wechat .rate").html((regWayWeChat / (regWayNormal + regWayAlipay + regWayWeChat)).toFixed(2) * 100 + '<i>%</i>');
+
+    $(".phone .num").html(regSourceMob);
+    $(".phone .rate").html((regSourceMob / (regSourceMob + regSourcePC)).toFixed(2) * 100 + '<i>%</i>');
+
+    $(".website .num").html(regSourcePC);
+    $(".website .rate").html((regSourcePC / (regSourceMob + regSourcePC)).toFixed(2) * 100 + '<i>%</i>');
+
+    authUserTotal = isAuthUser[isAuthUser.length - 1] + unAuthUser[unAuthUser.length - 1]
+    $("#authUserTotal").html(authUserTotal);
+    $("#isAuthUser").html(isAuthUser[isAuthUser.length - 1]);
+
+    //认证方式占比
+
+
+    //系统接入个数
+    sysAccess = [];
+    for (var i in queryByTotal) {
+        sysAccess.push(queryByTotal[i].sysAccess);
+    }
+    $("#sysAccess").html(sysAccess[sysAccess.length - 1]);
+
+    //企业用户占比
+    isAuthCorp = [];
+    unAuthCorp = [];
+    for (var i in queryByCor) {
+        isAuthCorp.push(queryByCor[i].isAuthCorp);
+        unAuthCorp.push(queryByCor[i].unAuthCorp);
+    }
+    authCorpTotal = isAuthCorp[isAuthCorp.length - 1] + unAuthCorp[isAuthCorp.length - 1]
+    $("#authCorpTotal").html(authCorpTotal);
+    $("#isAuthCorp").html(isAuthCorp[isAuthCorp.length - 1]);
+
+    //总认证用户数|法人数
+    allTotal = isAuthUser[isAuthUser.length - 1] + isAuthCorp[isAuthCorp.length - 1] + "";
+    for (i = 0; i < allTotal.length; i++) {
+        $("#allTotal").append('<span>' + allTotal.charAt(i) + '</span>');
+    }
+
+    pv = [];
+    uv = [];
+    statsDate = [];
+    for (var i in queryByPv) {
+        pv.push(queryByPv[i].pv);
+        uv.push(queryByPv[i].uv);
+        statsDate.push(queryByPv[i].statsDate.substring(5));
+    }
+    var pvMax = pv[0];
+    for (var i = 0; i < pv.length - 1; i++) {
+        pvMax = pvMax < pv[i + 1] ? pv[i + 1] : pvMax
+    }
+    var pvMaxArr = [];
+    for (var i = 0; i < pv.length; i++) {
+        pvMaxArr.push(pvMax + 500);
+    }
+    var uvMax = uv[0];
+    for (var i = 0; i < uv.length - 1; i++) {
+        uvMax = uvMax < uv[i + 1] ? uv[i + 1] : uvMax
+    }
+    var uvMaxArr = [];
+    for (var i = 0; i < uv.length; i++) {
+        uvMaxArr.push(uvMax + 500);
+    }
+
+    var queryByProvince = [[${queryByProvince}]];
+    queryByProvince = eval('(' + queryByProvince + ')');
+    var queryByRegion = [[${queryByRegion}]];
+    queryByRegion = eval('(' + queryByRegion + ')');
+    console.log(queryByRegion);
+
+
+</script>
+<script src="js/appService/unitIdentify/script.js" th:src="@{/js/appService/unitIdentify/script.js}"></script>
+
+</html>
+

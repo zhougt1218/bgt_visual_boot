@@ -1,0 +1,179 @@
+<!DOCTYPE HTML >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>政务服务平台</title>
+    <link href="css/appService/style.css" th:href="@{/css/appService/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="js/echarts.min.js" th:src="@{/js/echarts.min.js}"></script>
+    <script src="js/echartsmap/shandong.js" th:src="@{/js/echartsmap/shandong.js}"></script>
+</head>
+<body>
+<div class="header overflowH">
+    <img class="logo" src="img/appService/logo.png" th:src="@{/img/appService/logo.png}"/>
+</div>
+<div class="main">
+    <div class="over_before left_content">
+        <div class=" over_before left_top">
+            <h3 class=" title">
+                入驻情况
+            </h3>
+            <div class="left_left">
+                <p>
+                    <span class="left_title">省直</span>
+                    <span class="left_count">5</span>
+                    <span class="left_count">0</span>
+                    <span class="left_count">0</span>
+                    <span class="left_count">0</span>
+                </p>
+                <p>
+                    <span class="left_title">地市</span>
+                    <span class="left_count">5</span>
+                    <span class="left_count">0</span>
+                    <span class="left_count">0</span>
+                    <span class="left_count">0</span>
+                </p>
+            </div>
+            <div class="left_right " id="radar">
+
+            </div>
+        </div>
+        <div class="over_before left_center">
+            <h3 class=" title">
+                权力事项分配
+            </h3>
+            <div id="power">
+            </div>
+        </div>
+        <div class="over_before left_bottom">
+            <h3 class=" title">
+                发牌情况
+            </h3>
+            <div id="deal_situation">
+            </div>
+        </div>
+    </div>
+    <div class="center_content">
+        <div class="top">
+            <h3><img src="img/appService/title2.png" th:src="@{/img/appService/title2.png}"/> <span>累计办件量</span> <span class="count_num">5000</span>件</h3>
+        </div>
+        <div class="middle_top">
+            <div class="first_div">
+                <p class="data_num">5000</p>
+                <p class="data_name">本周办件量</p>
+            </div>
+            <div class="second_div">
+                <p class="data_num">5000</p>
+                <p class="data_name">当日办件量</p>
+            </div>
+            <div class="thrid_div">
+                <p class="data_num">75%</p>
+                <p class="data_name">办件量(%)</p>
+            </div>
+        </div>
+        <div class="middle_bottom">
+            <div class="power_spread">
+                <h3>权力事项分布</h3>
+                <div id="power_spread">
+                </div>
+            </div>
+            <div class="unit_rate">
+                <h3>办件率top5</h3>
+                <div id="unit_rate">
+                </div>
+            </div>
+        </div>
+        <div class="center_bottom over_before">
+            <h3 class="over_before">省直办件量</h3>
+            <div id="dept">
+
+            </div>
+        </div>
+    </div>
+    <div class="right_content">
+        <div class="over_before right_top">
+            <h3 class=" title">
+                地市办件量展示
+            </h3>
+            <div id="map_sd">
+
+            </div>
+        </div>
+        <div class="over_before right_bottom">
+            <h3 class=" title">
+                热门事项分析
+            </h3>
+            <table border="1" cellspacing="0" cellpadding="0" class="table_hot">
+                <thead>
+                <tr>
+                    <th>排行</th>
+                    <th>事项名称</th>
+                    <th>事项分析</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="num num1">1</td>
+                    <td class="white">关于xxxxxx</td>
+                    <td class="other_color">100000000</td>
+                </tr>
+                <tr>
+                    <td class="num num2">2</td>
+                    <td class="white">关于xxxxxx</td>
+                    <td class="other_color">100000000</td>
+                </tr>
+                <tr>
+                    <td class="num num3">3</td>
+                    <td class="white">关于xxxxxx</td>
+                    <td class="other_color">100000000</td>
+                </tr>
+                <tr>
+                    <td class="num num4">4</td>
+                    <td class="white">关于xxxxxx</td>
+                    <td class="other_color">100000000</td>
+                </tr>
+                <tr>
+                    <td class="num num5">5</td>
+                    <td class="white">关于xxxxxx</td>
+                    <td class="other_color">100000000</td>
+                </tr>
+                <tr>
+                    <td class="num num6">6</td>
+                    <td class="white">关于xxxxxx</td>
+                    <td class="other_color">100000000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/appService/index.js" th:src="@{/js/appService/index.js}"></script>
+<script src="js/echartsImg/echartsImg.js" th:src="@{/js/echartsImg/echartsImg.js}"></script>
+<script>
+    (function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a, b;
+        if (pingmu_width >= 3840) {
+            a = (pingmu_height / 2160).toFixed(8);
+            b = (pingmu_width / 3840).toFixed(8);
+
+        } else {
+            a = (pingmu_height / 1080).toFixed(8);
+            b = (pingmu_width / 1920).toFixed(8);
+        }
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    })();
+    window.addEventListener('resize', function () {
+        //重置屏幕宽高，根据宽高设置比例
+        var pingmu_height = $(window).height();
+        var pingmu_width = $(window).width();
+        var a = (pingmu_height / 1080).toFixed(8);
+        var b = (pingmu_width / 1920).toFixed(8);
+        $("body").css("transform", "scale(" + b + "," + a + ")");
+    });
+</script>
+</body>
+</html>
+

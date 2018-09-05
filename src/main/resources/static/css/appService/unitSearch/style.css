@@ -1,0 +1,357 @@
+html {
+    font-size: 100px;
+    height: 100%;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: Arial, "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", "Hiragino Sans GB ", SimSun, sans-serif;
+}
+
+body {
+    width: 1920px;
+    height: 1080px;
+    padding: 0;
+    margin: 0;
+    color: #343434;
+    font-size: 24px;
+    -webkit-text-size-adjust: 100% !important;
+    transform: scale(1, 1);
+    transform-origin: left top 0px;
+    background: url(../../../img/unitSearch/bg.png) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+a, a:hover {
+    text-decoration: none;
+    outline: 0;
+}
+
+a, img {
+    border: none;
+    display: block;
+}
+
+li {
+    list-style: none;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: normal;
+}
+
+.header {
+    height: 40px;
+    width: 100%;
+}
+
+.back {
+    font-size: 16px;
+    color: #12ffca;
+    float: left;
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.back span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../../../img/unitSearch/back.png) no-repeat;
+    position: relative;
+    top: 4px;
+}
+
+.timer {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #A0D4F5;
+    padding-right: 10px;
+}
+
+.content {
+    width: 100%;
+    height: 1040px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 19px;
+    padding-bottom: 55px;
+    overflow: hidden;
+}
+
+.content_top {
+    width: 100%;
+    height: 480px;
+}
+
+.top_left {
+    float: left;
+    height: 100%;
+    width: 617px;
+}
+
+.top_middle {
+    float: left;
+    height: 100%;
+    width: 645px;
+}
+
+.top_right {
+    height: 100%;
+    width: 617px;
+    float: left;
+}
+
+.module_title {
+    color: #a3dbff;
+    font-size: 18px;
+    padding-left: 25px;
+    margin-top: 16px;
+}
+
+.hot_list {
+    width: 100%;
+    padding: 20px;
+    padding-top: 0;
+    padding-left: 35px;
+}
+
+.hot_list li {
+    background: rgba(0, 14, 44, .36);
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    height: 42px;
+    box-shadow: 2px 2px 2px 2px #031A4A;
+}
+
+.hot_list li:first-child {
+    background: none;
+    color: #447aff;
+    box-shadow: none;
+}
+
+.hot_list .list1 {
+    color: #00ffa2;
+    background: #041746;
+}
+
+.hot_list .list2 {
+    color: #00efa3;
+    background: #041644;
+}
+
+.hot_list .list3 {
+    color: #00d6d2;
+    background: #03153E;
+}
+
+.hot_list .list4 {
+    color: #00b3f9;
+    background: #02133B;
+}
+
+.hot_list .list5 {
+    color: #00aeff;
+    background: #011138;
+}
+
+.hot_list .list6 {
+    color: #00A8F7;
+    background: #000F35;
+}
+
+.hot_list .list7 {
+    color: #00A0ED;
+    background: #000F34;
+}
+
+.hot_list li span {
+    float: left;
+    display: inline-block;
+    text-align: center;
+}
+
+.hot_list li i {
+    font-style: normal;
+    width: 70%;
+    text-align: center;
+    float: left;
+}
+
+.hot_list li b {
+    font-style: normal;
+    display: inline-block;
+    float: right;
+    width: 15%;
+    text-align: center;
+}
+
+.num, .name {
+    font-size: 16px;
+    color: #fff;
+    float: left;
+    position: relative;
+}
+
+.active_num {
+    color: #1ae7ff;
+    font-size: 36px;
+    left: 238px;
+    top: 170px;
+    display: inline-block;
+    width: 170px;
+    text-align: center;
+}
+
+.active_user {
+    left: 108px;
+    top: 135px;
+}
+
+.register_num {
+    left: -177px;
+    top: 265px;
+    display: inline-block;
+    width: 79px;
+    text-align: center;
+}
+
+.register_user {
+    left: -258px;
+    top: 350px;
+}
+
+.sum_search_num {
+    left: -141px;
+    top: 369px;
+    display: inline-block;
+    width: 79px;
+    text-align: center;
+}
+
+.sum_search {
+    left: -230px;
+    top: 450px;
+}
+
+.day_search_num {
+    left: 310px;
+    top: 245px;
+    width: 79px;
+    text-align: center;
+    display: inline-block;
+}
+
+.day_search {
+    top: 350px;
+    left: 225px;
+}
+
+.tag_cloud {
+    position: relative;
+    margin-top: 100px;
+}
+
+.tag_cloud a {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    padding-top: 40px;
+    text-align: center;
+    top: 0;
+    left: 0;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 50%;
+    background-color: #0656FF;
+    text-decoration: none;
+    -o-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+    -ms-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+    -moz-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+    -webkit-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+    box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')"; /*兼容ie7/8*/
+    filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=125, Strength=9);
+    /*strength是阴影大小，direction是阴影方位，单位为度，可以为负数，color是阴影颜色 （尽量使用数字）使用IE滤镜实现盒子阴影的盒子必须是行元素或以行元素显示（block或inline-block;）*/
+}
+
+.tag_cloud a:hover {
+    color: #fff;
+}
+
+.content_bottom {
+    width: 100%;
+    margin-top: 25px;
+    height: 460px;
+}
+
+.bottom_left {
+    height: 100%;
+    width: 626px;
+    float: left;
+}
+
+.bottom_middle {
+    float: left;
+    height: 100%;
+    width: 615px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.bottom_right {
+    float: left;
+    height: 100%;
+    width: 615px;
+    margin-left: 10px;
+}
+
+#user_login {
+    width: 100%;
+    height: 425px;
+    padding-left: 20px;
+    padding-right: 30px;
+}
+
+#index_position {
+    width: 100%;
+    height: 425px;
+}
+
+.index_num {
+    color: #fff;
+    font-size: 16px;
+    position: absolute;
+    top: 45px;
+    left: 25px;
+}
+
+.index_num span {
+    color: #11FFB3;
+    font-size: 22px;
+}
+
+#ask_pos {
+    width: 100%;
+    height: 425px;
+
+}

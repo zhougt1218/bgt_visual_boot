@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.sdyy.springboot.bgt.bgt_visual_boot.mapper.OpenDataMapper">
+		
+	<!-- 按组织机构获取资源统计信息表  from open_data_org_statistics -->
+	<select id="queryByOrg" resultType="QueryByOrg">
+		SELECT
+			*
+		FROM
+			(
+				SELECT
+					*
+				FROM
+					open_data_org_statistics
+				ORDER BY
+					update_time DESC
+			) a
+		WHERE
+			region_code = '37'
+		GROUP BY
+			org_name
+		ORDER BY
+			provide_cata_amount DESC
+	</select>
+	
+	<!-- 按地市获取资源统计信息  from open_data_region_statistics -->
+	<select id="queryByRegion" resultType="QueryByRegion">
+		SELECT
+			SUM(provide_cata_amount) AS provide_cata_amount,
+			SUM(provide_api_amount) AS provide_api_amount,
+			SUM(provide_file_amount) AS provide_file_amount,
+			SUM(provide_data_amount) AS provide_data_amount,
+			SUM(app_count) AS app_count
+		FROM
+			open_data_region_statistics
+		WHERE
+			update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_region_statistics
+			)
+	</select>
+	
+	<!-- 按地市获取资源统计信息  from open_data_region_statistics -->
+	<select id="queryByCity" resultType="QueryByRegion">
+		SELECT
+			*
+		FROM
+			open_data_region_statistics
+		WHERE
+			region_code != '37'
+		AND update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_region_statistics
+			)
+	</select>
+	
+	
+	<!-- 按主题获取统计信息  from open_data_group_statistic -->
+	<select id="queryByGroup" resultType="QueryByGroup">
+		SELECT
+			*
+		FROM
+			open_data_group_statistics
+		WHERE
+			update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_group_statistics
+			)
+		ORDER BY
+			provide_cata_amount DESC
+		LIMIT 1,8
+	</select>
+	
+	<!-- 按部门查看目录使用情况  from open_data_catalog_use_statistic -->
+	<select id="queryByCatalog" resultType="QueryByCatalog">
+		SELECT
+			*
+		FROM
+			open_data_catalog_use_statistic
+		WHERE
+			region_code = '37' AND update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_catalog_use_statistic
+			)
+		ORDER BY
+			cata_visit_num DESC
+	</select>
+	
+	<!-- 按部门查看所有目录使用情况  from open_data_catalog_use_statistic -->
+	<select id="queryByUse" resultType="QueryByCatalog">
+		SELECT
+			SUM(cata_visit_num) AS cata_visit_num,
+			SUM(cata_download_num) AS cata_download_num,
+			SUM(total_apply_count) AS total_apply_count,
+			SUM(total_visits_count) AS total_visits_count
+		FROM
+			open_data_catalog_use_statistic
+		WHERE
+			update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_catalog_use_statistic
+			)
+	</select>
+	
+	<!-- 按部门查看所有目录使用情况  from open_data_catalog_use_statistic -->
+	<select id="queryByUseDay" resultType="QueryByCatalog">
+		SELECT
+			update_time,
+			cata_visit_num,
+			cata_download_num,
+			total_apply_count
+		FROM
+			open_data_cata_use
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(update_time)
+							
+	</select>
+	
+	
+	<!-- 按部门查看接口使用情况  from open_data_api_use_statistic -->
+	<select id="queryByAPI" resultType="QueryByAPI">
+		SELECT
+			*
+		FROM
+			open_data_api_use_statistic
+		WHERE
+			region_code = '37' AND to_days(update_time) = to_days(now())
+		ORDER BY
+			total_apply_count DESC
+	</select>
+	
+	<!-- 查询热门目录  from open_data_hot_catalog_statistic -->
+	<select id="queryByHotCatalog" resultType="QueryByHotCatalog">
+		SELECT
+			*
+		FROM
+			open_data_hot_catalog_statistic
+		WHERE
+			to_days(update_time) = to_days(now()) 
+		ORDER BY
+			num DESC
+	</select>
+	
+	<!-- 查询每日访问情况  from open_data_daily_statistic -->
+	<select id="queryByDaily" resultType="QueryByDaily">
+		SELECT
+			*
+		FROM
+			open_data_daily_statistic
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(update_time)
+	</select>
+	
+	<!-- 周热门目录访问  from open_data_week_hot_catalog_view -->
+	<select id="queryByWeekCataView" resultType="QueryByWeekCata">
+		SELECT DISTINCT(A.ORG_NAME),A.NVISITLIANG-B.BVISITLIANG AS cata_view_count FROM 
+		(SELECT ORG_NAME,cata_visit_num AS NVISITLIANG
+		 FROM open_data_catalog_use_statistic 
+		WHERE DATE_SUB(CURDATE(), INTERVAL 0 DAY) = date(update_time))A
+		LEFT JOIN 
+		(SELECT ORG_NAME,cata_visit_num AS BVISITLIANG
+		 FROM open_data_catalog_use_statistic 
+		WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) = date(update_time))B
+		ON A.ORG_NAME=B.ORG_NAME
+		ORDER BY A.NVISITLIANG-B.BVISITLIANG DESC
+		limit 0,5
+	</select>
+	
+	<!-- 周热门数据文件下载  from open_data_week_hot_catalog_download -->
+	<select id="queryByWeekCataDown" resultType="QueryByWeekCata">
+		SELECT DISTINCT(A.ORG_NAME),A.NVISITLIANG-B.BVISITLIANG AS download_count FROM 
+		(SELECT ORG_NAME,cata_download_num AS NVISITLIANG
+		 FROM open_data_catalog_use_statistic 
+		WHERE DATE_SUB(CURDATE(), INTERVAL 0 DAY) = date(update_time))A
+		LEFT JOIN 
+		(SELECT ORG_NAME,cata_download_num AS BVISITLIANG
+		 FROM open_data_catalog_use_statistic 
+		WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) = date(update_time))B
+		ON A.ORG_NAME=B.ORG_NAME
+		ORDER BY A.NVISITLIANG-B.BVISITLIANG DESC
+		limit 0,5
+	</select>
+	
+	<!-- 周热门服务调用  from open_data_week_hot_catalog_api -->
+	<select id="queryByWeekCataAPI" resultType="QueryByWeekCata">
+		SELECT DISTINCT(A.ORG_NAME),A.NVISITLIANG-B.BVISITLIANG AS api_apply_count FROM 
+		(SELECT ORG_NAME,total_apply_count AS NVISITLIANG
+		 FROM open_data_catalog_use_statistic 
+		WHERE DATE_SUB(CURDATE(), INTERVAL 0 DAY) = date(update_time))A
+		LEFT JOIN 
+		(SELECT ORG_NAME,total_apply_count AS BVISITLIANG
+		 FROM open_data_catalog_use_statistic 
+		WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) = date(update_time))B
+		ON A.ORG_NAME=B.ORG_NAME
+		ORDER BY A.NVISITLIANG-B.BVISITLIANG DESC
+		limit 0,5
+	</select>
+	
+	<!-- 查询每日下载情况  from open_data_daily_statistic -->
+	<!-- <select id="queryByCataDownload" resultType="com.study.model.OpenData.QueryByHotCatalog">
+		SELECT
+			*
+		FROM
+			open_data_cata_download
+		WHERE
+			to_days(update_time) = to_days(now()) 
+	</select> -->
+	
+	<!-- 查询每日访问情况  from open_data_daily_statistic -->
+	<!-- <select id="queryByWeb" resultType="com.study.model.OpenData.QueryByDaily">
+		SELECT
+			*
+		FROM
+			open_data_web_statistic
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 5 DAY) &lt;= date(update_time)
+	</select> -->
+	
+
+	<!-- 查询cata、data、api、file 七日变化 -->
+	<!-- <select id="queryByCataDay" resultType="com.study.model.OpenData.QueryByOrg">
+		SELECT
+			update_time,
+			sum(provide_cata_amount) AS provide_cata_amount,
+			sum(provide_data_amount) AS provide_data_amount,
+			sum(provide_api_amount) AS provide_api_amount,
+			sum(provide_file_amount) AS provide_file_amount
+		FROM
+			open_data_org_statistics
+		WHERE
+			region_code = '37'
+		AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(update_time)
+		GROUP BY
+			update_time
+	</select> -->
+	
+	
+	<!-- 实时查找当天下载的内容  Websocket-->
+	<select id="queryByCataDownloadDay" resultType="QueryByWeekCata">
+		SELECT * FROM 
+		open_data_file_download_log
+		where to_days(update_time) = to_days(now())
+		ORDER BY id DESC
+		limit 0,10
+	</select>
+	
+	<!-- 查询每天活跃用户 -->
+	<select id="queryByWebDaily" resultType="QueryByDaily">
+		SELECT
+	D.update_time AS update_time,
+	D.HVISITLIANG - D.VISITLIANG AS login_count_sum,
+	D.register_count_sum AS register_count_sum
+FROM
+	(
+		SELECT
+			B.*, C.VISITLIANG AS HVISITLIANG
+		FROM
+			(
+				SELECT
+					A.update_time,
+					A.login_count_sum AS VISITLIANG,
+					A.register_count_sum
+				FROM
+					open_data_daily_statistic A
+				WHERE
+					DATE_SUB(CURDATE(), INTERVAL 8 DAY) &lt;= date(update_time)
+				GROUP BY
+					A.update_time
+			) B
+		LEFT JOIN (
+			SELECT
+				A.update_time,
+				A.login_count_sum AS VISITLIANG
+			FROM
+				open_data_daily_statistic A
+			WHERE
+				DATE_SUB(CURDATE(), INTERVAL 8 DAY) &lt;= date(update_time)
+			GROUP BY
+				A.update_time
+		) C ON B.update_time = DATE_SUB(C.update_time, INTERVAL 1 DAY)
+	) D
+	ORDER BY
+	TO_DAYS(update_time)
+	</select>
+	
+	<!-- 中间图数据 累计情况 地市数据 -->
+	<select id="queryBySumCity" resultType="QueryByCatalog">
+		SELECT
+			b.cata_visit_num,
+			b.cata_download_num,
+			b.total_apply_count,
+			a.region_code,
+			a.region_name AS org_name
+		FROM
+			open_data_city a
+		LEFT JOIN (
+			SELECT
+				region_code,
+				SUM(cata_visit_num) AS cata_visit_num,
+				sum(cata_download_num) AS cata_download_num,
+				sum(total_apply_count) AS total_apply_count
+			FROM
+				open_data_catalog_use_statistic
+			WHERE
+				update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_region_statistics
+			)
+			AND region_code != '37'
+			GROUP BY
+				region_code
+		) b ON a.region_code = b.region_code
+	</select>
+	
+	<!-- 中间图数据 累计情况 省直部门数据 -->
+	<select id="queryBySumDept" resultType="QueryByCatalog">
+		SELECT
+			B.org_name_short,
+			a.cata_visit_num,
+			a.cata_download_num,
+			a.total_apply_count
+		FROM
+			open_data_org_dic B
+		LEFT JOIN (
+			SELECT
+				org_name,
+				cata_visit_num,
+				cata_download_num,
+				total_apply_count
+			FROM
+				open_data_catalog_use_statistic
+			WHERE
+				TO_DAYS(update_time) = TO_DAYS(now())
+			AND region_code = '37'
+			ORDER BY
+				cata_visit_num DESC
+		) A ON A.org_name = B.org_name
+	</select>
+	
+	<!-- 查询七日内下载的目录-->
+	<select id="queryByCataDownWeek" resultType="QueryByWeekCata">
+		SELECT
+			cata_title,
+			count(*) AS download_count
+		FROM
+			open_data_file_download_log
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(update_time)
+		GROUP BY
+			cata_title
+		ORDER BY
+			download_count DESC
+		LIMIT 0,5
+	</select>
+	
+	<!-- 查询近期访问量增量 -->
+	<select id="queryByVisitCount" resultType="QueryByDaily">
+		SELECT
+			DATE_ADD(D.update_time, INTERVAL 1 DAY) AS update_time,
+			D.HVISITLIANG - D.VISITLIANG AS visit_count_sum
+		FROM
+			(
+				SELECT
+					B.*, C.VISITLIANG AS HVISITLIANG
+				FROM
+					(
+						SELECT
+							A.update_time,
+							visit_count_sum AS VISITLIANG
+						FROM
+							open_data_daily_statistic A
+						WHERE
+							DATE_SUB(CURDATE(), INTERVAL 8 DAY) &lt;= date(update_time)
+						GROUP BY
+							A.update_time
+					) B
+				LEFT JOIN (
+					SELECT
+						A.update_time,
+						visit_count_sum AS VISITLIANG
+					FROM
+						open_data_daily_statistic A
+					WHERE
+						DATE_SUB(CURDATE(), INTERVAL 8 DAY) &lt;= date(update_time)
+					GROUP BY
+						A.update_time
+				) C ON B.update_time = DATE_SUB(C.update_time, INTERVAL 1 DAY)
+			) D
+		WHERE
+			D.HVISITLIANG != ""
+	</select>
+	
+	<select id="queryByRegionDept" resultType="QueryByRegion">
+		SELECT
+			MONTH (update_time) AS update_time,
+			SUM(case when region_code = '37' then provide_cata_amount end) AS provide_cata_amount,
+			SUM(case when region_code = '37' then provide_data_amount end) AS provide_data_amount,
+			SUM(case when region_code = '37' then provide_file_amount end) AS provide_file_amount,
+			SUM(
+				CASE
+				WHEN region_code = '37' THEN
+					provide_api_amount
+				END
+			) - SUM(
+				CASE
+				WHEN region_code != '37' THEN
+					provide_api_amount
+				END
+			) AS provide_api_amount
+		FROM
+			open_data_region_statistics
+		WHERE
+			update_time IN (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_region_statistics
+				GROUP BY
+					MONTH (update_time)
+			)
+		GROUP BY
+			MONTH (update_time)
+	</select>
+	
+	<select id="queryByRegionCity" resultType="QueryByRegion">
+		SELECT
+			MONTH (update_time) AS update_time,
+			SUM(provide_cata_amount) AS provide_cata_amount,
+			SUM(provide_api_amount) AS provide_api_amount,
+			SUM(provide_file_amount) AS provide_file_amount,
+			SUM(provide_data_amount) AS provide_data_amount
+		FROM
+			open_data_region_statistics
+		WHERE
+			update_time IN (
+				SELECT
+					max(update_time)
+				FROM
+					open_data_region_statistics
+				GROUP BY
+					MONTH (update_time)
+			)
+		AND region_code != '37'
+		GROUP BY
+			update_time
+	</select>
+	
+</mapper> 

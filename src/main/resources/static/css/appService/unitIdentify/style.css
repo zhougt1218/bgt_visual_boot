@@ -1,0 +1,373 @@
+html {
+    font-size: 100px;
+    height: 100%;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: Arial, "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", "Hiragino Sans GB ", SimSun, sans-serif;
+}
+
+body {
+    width: 1920px;
+    height: 1080px;
+    padding: 0;
+    margin: 0;
+    color: #343434;
+    font-size: 24px;
+    -webkit-text-size-adjust: 100% !important;
+    transform: scale(1, 1);
+    transform-origin: left top 0px;
+    overflow: hidden;
+    background: url(../../../img/unitIdentify/bg.png) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+a, a:hover {
+    text-decoration: none;
+    outline: 0;
+}
+
+a, img {
+    border: none;
+    display: block;
+}
+
+li {
+    list-style: none;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: normal;
+}
+
+/*自定义样式*/
+.header {
+    height: 40px;
+    width: 100%;
+}
+
+.back {
+    font-size: 16px;
+    color: #12ffca;
+    float: left;
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.back span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../../../img/unitIdentify/back.png) no-repeat;
+    position: relative;
+    top: 4px;
+}
+
+.timer {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #A0D4F5;
+    padding-right: 20px;
+}
+
+.content {
+    margin-top: 18px;
+    width: 100%;
+    height: 1025px;
+    padding: 0 20px;
+    overflow: hidden;
+    padding-bottom: 55px;
+}
+
+.left_content {
+    height: 100%;
+    float: left;
+    width: 455px;
+}
+
+.middle_content {
+    height: 100%;
+    width: 968px;
+    float: left;
+}
+
+.right_content {
+    height: 100%;
+    float: left;
+    width: 455px;
+}
+
+.register_user {
+    width: 100%;
+    height: 285px;
+}
+
+.module_title {
+    font-size: 18px;
+    color: #d1ecfe;
+    margin-top: 10px;
+    padding-left: 30px;
+}
+
+.register_left, .register_right {
+    float: left;
+    width: 50%;
+    height: 250px;
+}
+
+.register_right {
+    padding-top: 35px;
+}
+
+.company_user {
+    width: 100%;
+    height: 250px;
+    margin-top: 10px;
+}
+
+.company_user .module_title {
+    margin-top: 20px;
+}
+
+.company_left, .company_right {
+    float: left;
+    width: 50%;
+    height: 223px;
+}
+
+.company_right {
+    margin-top: 20px;
+}
+
+.identify_type {
+    margin-top: 13px;
+    width: 100%;
+    height: 375px;
+}
+
+.identify_type .module_title {
+    margin-top: 32px;
+}
+
+.identify_content {
+    width: 100%;
+    height: 350px;
+    padding: 30px;
+}
+
+.middle_title {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 85px;
+}
+
+.identify_num {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.identify_num span {
+    display: inline-block;
+    width: 38px;
+    height: 64px;
+    background: url(../../../img/unitIdentify/num_bg.png) no-repeat;
+    color: #17e8ff;
+    font-size: 50px;
+}
+
+.system_count {
+    width: 100%;
+    height: 285px;
+}
+
+.system_num {
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    top: 100px;
+}
+
+.system_num span {
+    font-size: 36px;
+    color: #00e5ff;
+}
+
+.user_count {
+    width: 100%;
+    height: 325px;
+}
+
+.user_count .module_title {
+    margin-top: 22px;
+}
+
+.uv_img {
+    width: 100%;
+    height: 287px;
+}
+
+.pv_img {
+    width: 100%;
+    height: 283px;
+}
+
+.page_count {
+    width: 100%;
+    height: 308px;
+}
+
+.page_count .module_title {
+    margin-top: 22px;
+}
+
+.china_img {
+    width: 100%;
+    height: 770px;
+    position: relative;
+    top: -23px;
+    padding: 0 20px;
+}
+
+.cicle1 {
+    float: left;
+    height: 12px;
+    width: 12px;
+    margin-right: 10px;
+    margin-top: 4px;
+    border-radius: 50%;
+    background: #fff600;
+}
+
+.cicle2 {
+    float: left;
+    height: 12px;
+    width: 12px;
+    margin-right: 10px;
+    margin-top: 4px;
+    border-radius: 50%;
+    background: #0053FF;
+}
+
+.subtitle2 {
+    font-size: 16px;
+    color: #c6ddff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.data_content {
+    color: #fff;
+    padding-left: 24px;
+}
+
+.legend_list {
+    float: left;
+    color: #c6ddff;
+    font-size: 16px;
+    width: 126px;
+    margin-top: 15px;
+    margin-right: 20px;
+    width: 40%;
+}
+
+.legend_list > p {
+    float: left;
+}
+
+.identify_top {
+    width: 400px;
+    height: 96px;
+    background: url(../../../img/unitIdentify/identify_top.png) no-repeat;
+    margin-top: 30px;
+}
+
+.identify_bottom {
+    width: 264px;
+    height: 96px;
+    background: url(../../../img/unitIdentify/identify_bottom.png) no-repeat;
+    margin-top: 30px;
+}
+
+.source_type {
+    width: 125px;
+    height: 100%;
+    color: #fff;
+    float: left;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.source_type .num {
+    position: relative;
+    font-size: 18px;
+    top: -11px;
+}
+
+.others {
+    position: relative;
+    left: 4px;
+}
+
+.wechat {
+    position: relative;
+    left: 22px;
+}
+
+.alipay {
+    position: relative;
+    left: 12px;
+}
+
+.source_type .rate {
+    font-size: 30px;
+    position: relative;
+    top: 17px;
+    left: 18px;
+}
+
+.source_type .rate i {
+    font-size: 18px;
+    position: relative;
+    left: 0px;
+    font-style: normal;
+}
+
+.phone {
+    position: relative;
+    left: 12px;
+}
+
+.others .rate, .website .rate {
+    top: 1px;
+    left: 48px;
+}
+
+.others .num, .website .num {
+    top: -2px;
+}
+
+.website {
+    position: relative;
+    left: 5px
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.sdyy.springboot.bgt.bgt_visual_boot.mapper.UnitTeachMapper">
+		
+	<select id="queryByBasic" resultType="QueryByBasic">
+		SELECT
+			*
+		FROM
+			trs_basicdata
+		WHERE 
+			update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					trs_basicdata
+			)
+			order by CONVERT(chnls_num,signed) desc
+	</select>
+	
+	<select id="queryByDisk" resultType="QueryByDisk">
+		SELECT
+			*
+		FROM
+			trs_diskdata
+		WHERE 
+			update_time = (
+				SELECT
+					max(update_time)
+				FROM
+					trs_diskdata
+			)
+	</select>
+	
+	<select id="queryByQueryZhanban" resultType="QueryByZhanban">
+		SELECT
+			*
+		FROM
+			trs_zhanbandata
+		WHERE 
+			crtime = (
+				SELECT
+					max(crtime)
+				FROM
+					trs_zhanbandata
+			)
+	</select>
+	
+	<select id="queryByArticle" resultType="QueryByArticle">
+		SELECT
+			*
+		FROM
+			trs_articletop
+			where TO_DAYS(update_time) = (SELECT max(TO_DAYS(update_time)) from trs_articletop)
+	</select>
+	
+	<select id="queryByWebsite" resultType="QueryByWebsite">
+		SELECT
+			web_name,
+			CONVERT(view_num,signed) as view_num,
+			update_time
+		FROM
+			trs_websitetop
+		where date(update_time) = date(now())
+	</select>
+	
+	<select id="queryByClick" resultType="QueryByClick">
+		SELECT
+			*
+		FROM
+			trs_clickdata
+	</select>
+	
+	<select id="queryByPoparticle" resultType="QueryByArticle">
+		SELECT 
+			Date(c_date) as update_time,
+			vc_title as article_title,
+			vc_url as article_url,
+			CONVERT(vc_hits,signed) as view_num
+		FROM 
+			jcms_poparticle
+		where 
+			c_date = (SELECT max(c_date) from jcms_poparticle)
+		order by view_num desc
+	</select>
+	
+	<select id="queryByPopWeb" resultType="QueryByWebsite">
+		SELECT 
+			Date(c_date) as update_time,
+			vc_webname as web_name,
+			CONVERT(vc_hitsum,signed) as view_num
+		FROM 
+			jcms_popweb
+		where 
+			c_date = (SELECT max(c_date) from jcms_popweb)
+		order by view_num desc
+		limit 0,10
+	</select>
+	
+	<select id="queryByStat" resultType="QueryByStat">
+		SELECT 
+			*
+		FROM 
+			jcms_stat
+		where 
+			c_date = (SELECT max(c_date) from jcms_stat)
+	</select>
+	
+	
+	<select id="queryByDailyUserStat" resultType="QueryByDailyUserStat">
+		SELECT 
+			date(c_date) as c_date,c_dailydata
+		FROM 
+			jcms_dailyuserstat
+			where DATE_SUB(CURDATE(), INTERVAL 8 DAY) &lt; date(c_date)
+			order by date(c_date)
+	</select>
+	
+	<select id="queryByWebStat" resultType="QueryByWebStat">
+		SELECT
+			* 
+		FROM
+			jcms_webstat 
+		WHERE
+			date( c_date ) = ( SELECT max( c_date ) FROM jcms_webstat ) 
+		ORDER BY
+			i_colsum DESC 
+		LIMIT 0,10
+	</select>
+	 
+	
+	
+</mapper> 

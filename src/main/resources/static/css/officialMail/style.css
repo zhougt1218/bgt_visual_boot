@@ -1,0 +1,459 @@
+html {
+    font-size: 100px;
+    height: 100%;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: Arial, "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", "Hiragino Sans GB ", SimSun, sans-serif;
+}
+
+body {
+    width: 1920px;
+    height: 1080px;
+    padding: 0;
+    margin: 0;
+    color: #343434;
+    font-size: 24px;
+    -webkit-text-size-adjust: 100% !important;
+    transform: scale(1, 1);
+    transform-origin: left top 0px;
+    overflow: hidden;
+    background: url(../../img/officialMail/bg.png) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+a, a:hover {
+    text-decoration: none;
+    outline: 0;
+}
+
+a, img {
+    border: none;
+    display: block;
+}
+
+li {
+    list-style: none;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: normal;
+}
+
+.overflowH {
+    overflow: hidden;
+}
+
+/*自定义样式*/
+.header {
+    height: 40px;
+    width: 100%;
+}
+
+.back {
+    font-size: 16px;
+    color: #12ffca;
+    float: left;
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.back span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../../img/officialMail/back.png) no-repeat;
+    position: relative;
+    top: 4px;
+}
+
+.timer {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #A0D4F5;
+    padding-right: 20px;
+}
+
+.content_top {
+    width: 100%;
+    height: 632px;
+    margin-top: 19px;
+    padding: 0 20px;
+}
+
+.mail_receive {
+    float: left;
+    height: 100%;
+    width: 615px;
+}
+
+.user_group {
+    float: left;
+    height: 100%;
+    width: 610px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.company_active {
+    float: left;
+    height: 100%;
+    width: 612px;
+}
+
+.content_title {
+    width: 100%;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    color: #a3dbff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mail_receive_content {
+    margin-top: 10px;
+    width: 100%;
+    height: 580px;
+    padding: 10px 20px;
+}
+
+.moudle_title {
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    color: #A3DBFF;
+    font-size: 18px;
+}
+
+.title_icon {
+    display: inline-block;
+    width: 12px;
+    height: 20px;
+    background: url(../../img/officialMail/title_icon.png) no-repeat;
+    position: relative;
+    left: 5px;
+    top: 3px;
+}
+
+.title_bg {
+    display: inline-block;
+    height: 24px;
+    width: 80%;
+    /*     background: url(../../img/officialMail/title_bg.png) no-repeat; */
+    text-indent: 10px;
+}
+
+#count_num, #count_flow, #day_num, #day_flow {
+    margin-left: -9%;
+    width: 120%;
+    height: 40px;
+}
+
+.echarts_top {
+    width: 100%;
+    height: -2px;
+    font-size: 18px;
+    padding-left: 20px;
+    position: relative;
+    top: 10px;
+}
+
+.echarts_top .left_num {
+    color: #fff600;
+    float: left;
+}
+
+.echarts_top .right_num {
+    color: #60fffc;
+    float: right;
+}
+
+.unit_access, .user_group_num, .access_city {
+    float: left;
+    position: relative;
+    top: 24px;
+    left: 52px;
+    width: 141px;
+    height: 141px;
+    border-radius: 50%;
+    /* background: #f00; */
+    padding: 25px;
+    padding-top: 45px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.unit_access {
+    left: -12px;
+    top: -61px;
+    width: 185px;
+}
+
+.access_city {
+    left: -12px;
+    top: -165px;
+}
+
+.user_group_num .num {
+    text-align: left;
+    color: #FFFC00
+}
+
+.unit_access .num {
+    color: #FF8A00;
+    text-align: left;
+}
+
+.access_city .num {
+    color: #00F4EB;
+    text-align: left;
+}
+
+.unit_access p:last-child, .user_group_num p:last-child, .access_city p:last-child {
+    font-size: 30px;
+}
+
+.user_group_num {
+    left: -200px;
+    top: 84px;
+}
+
+.user_register {
+    float: left;
+    position: relative;
+    width: 177px;
+    height: 177px;
+    border-radius: 50%;
+    /* background: #f00; */
+    padding: 25px;
+    padding-top: 45px;
+    color: #fff;
+    font-size: 18px;
+    left: -110px;
+    text-align: center;
+    top: 65px;
+}
+
+.user_register p:last-child {
+    font-size: 40px;
+}
+
+.login_pos {
+    width: 100%;
+    margin-top: 400px;
+    height: 80px;
+}
+
+.login_temp {
+    width: 100%;
+    height: 80px;
+}
+
+.top10 {
+    margin-top: 10px;
+    height: 580px;
+    width: 100%;
+    padding: 10px 30px;
+    color: #00ffa2;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.top10 li {
+    background: #051C56;
+    padding: 10px 20px;
+    margin-top: 15px;
+}
+
+.top10 li span {
+    float: right;
+}
+
+.top10 .li2 {
+    background: #061C52;
+}
+
+.top10 .li3 {
+    background: #061B4E;
+    color: #00fda4;
+}
+
+.top10 .li4 {
+    background: #061949;
+    color: #00f0b3;
+}
+
+.top10 .li5 {
+    background: #051745;
+    color: #00dec8;
+}
+
+.top10 .li6 {
+    background: #041641;
+    color: #00cadf;
+}
+
+.top10 .li7 {
+    background: #04143E;
+    color: #00b9f2;
+}
+
+.top10 .li8 {
+    background: #02113A;
+    color: #00aeff;
+}
+
+.top10 .li9 {
+    background: #011138;
+    color: #00aeff;
+}
+
+.top10 .li10 {
+    background: #011037;
+    color: #00aeff;
+}
+
+.top10 li i {
+    font-style: normal;
+    margin-left: 30px;
+}
+
+.content_bottom {
+    width: 100%;
+    height: 360px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.content_bottom > div {
+    float: left;
+    height: 100%;
+    width: 455px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.content_bottom div:last-child {
+    margin-right: 0;
+}
+
+.content_bottom > div > div {
+    width: 100%;
+    height: 255px;
+}
+
+#mail_rate {
+    width: 100%;
+    height: 170px;
+    position: relative;
+    top: -30px;
+}
+
+/*字符云*/
+
+#attack_site_content {
+    position: relative;
+    margin-top: 30px;
+}
+
+#attack_site_content a {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    padding-top: 20px;
+    text-align: center;
+    top: 0;
+    left: 0;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 50%;
+    background-color: #0656FF;
+    text-decoration: none;
+    -o-box-shadow: 6px 4px 8px 0 rgba(29, 135, 255, .5);
+    -ms-box-shadow: 6px 4px 8px 0 rgba(29, 135, 255, .5);
+    -moz-box-shadow: 6px 4px 8px 0 rgba(29, 135, 255, .5);
+    -webkit-box-shadow: 6px 4px 8px 0 rgba(29, 135, 255, .5);
+    box-shadow: 6px 4px 8px 0 rgba(29, 135, 255, .5);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')"; /*兼容ie7/8*/
+    filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=125, Strength=9);
+    /*strength是阴影大小，direction是阴影方位，单位为度，可以为负数，color是阴影颜色 （尽量使用数字）使用IE滤镜实现盒子阴影的盒子必须是行元素或以行元素显示（block或inline-block;）*/
+}
+
+#attack_site_content a:hover {
+    color: #fff;
+}
+
+.login_group {
+    position: relative;
+    left: 20px;
+}
+
+.manager_icon {
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url(../../img/officialMail/gly.png) no-repeat;
+    top: 10px
+}
+
+.temp_icon {
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url(../../img/officialMail/lsyh.png) no-repeat;
+    top: 95px;
+}
+
+.manager_num {
+    font-size: 16px;
+    color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 70px;
+    width: 76%;
+}
+
+.manager_num span {
+    float: right;
+}
+
+.temp_num {
+    font-size: 16px;
+    color: #fff;
+    position: absolute;
+    top: 135px;
+    left: 70px;
+    width: 76%;
+}
+
+.temp_num span {
+    float: right;
+}
+
+.login_group {
+    width: 100%;
+    height: 235px;
+    margin-top: 325px;
+}
